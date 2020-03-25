@@ -14,7 +14,9 @@ class MitraController extends Controller
      */
     public function index()
     {
-        //
+        //       
+         return view('layouts.mitra');
+
     }
 
     /**
@@ -25,6 +27,7 @@ class MitraController extends Controller
     public function create()
     {
         //
+        return view('layouts.mitraCreate');
     }
 
     /**

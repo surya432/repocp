@@ -25,3 +25,5 @@ Route::get('/home/setting','WebsiteController@setting')->name("setting")->middle
 Route::get('/home/perijinan','PerijinanController@index')->name("perijinan")->middleware('auth');
 Route::get('/home/product','ProducController@index')->name("Product")->middleware('auth');
 Route::get('/home/dokumentasi','DokumentasiController@index')->name("dokumentasi")->middleware('auth');
+Route::get('/home/mitra','MitraController@index')->name("dokumentasi")->middleware('auth');
+Route::get('/home/mitra/create','MitraController@create')->name("dokumentasi")->middleware('auth');
