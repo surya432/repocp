@@ -15,6 +15,8 @@ class PerijinanController extends Controller
     public function index()
     {
         //
+        $perijinan = Perijinan::all();   
+        return view('layouts.perijinan', ['Perijinan' => $perijinan]);
     }
 
     /**
@@ -25,6 +27,7 @@ class PerijinanController extends Controller
     public function create()
     {
         //
+        return view('layouts.perijinanCreate');
     }
 
     /**
@@ -58,6 +61,7 @@ class PerijinanController extends Controller
     public function edit(Perijinan $perijinan)
     {
         //
+        return view('layouts.perijinanEdit');
     }
 
     /**

@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">Mitra Data</p>
+                    <p class="mb-0">Data Mitra</p>
                    
                    <!-- Table -->
                  <section class="content">
@@ -26,24 +26,26 @@
                                                 <th width=10%>ID</th>
                                                 <th width=20%>Nama</th>
                                                 <th width=15%>Images</th>
-                                                <th width=20%>Created Up</th>
-                                                <th width=20%>Update Up</th>
+                                                <th width=20%>Created At</th>
+                                                <th width=20%>Update At</th>
                                                 <th width=25%>Actions</th> 
                                             </tr>
                                         </thead>
 
                                         <tbody>  
+                                        @foreach($Mitra as $key)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{$key->id}}</td>
+                                            <td>{{$key->nama}}</td>
+                                            <td>{{$key->images}}</td>
+                                            <td>{{$key->created_at}}</td>
+                                            <td>{{$key->update_at}}</td>
                                             <td>
                                                 <a href="#">Delete</a> |
-                                                <a href="#">Update</a>
+                                                <a href="{{ route('mitraEdit') }}">Update</a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                         </tbody>
                                         
 
@@ -57,7 +59,7 @@
 
                 </section><!-- /.content -->
                                     <!-- End Table -->
-
+               <a class="nav-link" href="{{ route('mitraCreate') }}"><input type="submit" class="btn btn-primary" value="Tambah Data"></a>
                 </div>
             </div>
         </div>

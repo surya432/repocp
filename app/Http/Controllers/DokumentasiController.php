@@ -15,7 +15,8 @@ class DokumentasiController extends Controller
     public function index()
     {
         //
-        return view('layouts.dokumentasi');
+        $dokumentasi = Dokumentasi::all();
+        return view('layouts.dokumentasi',['Dokumentasi' => $dokumentasi]);
     }
 
     /**
@@ -26,6 +27,7 @@ class DokumentasiController extends Controller
     public function create()
     {
         //
+        return view('layouts.dokumentasiCreate');
     }
 
     /**
@@ -59,6 +61,7 @@ class DokumentasiController extends Controller
     public function edit(Dokumentasi $dokumentasi)
     {
         //
+        return view('layouts.dokumentasiEdit');
     }
 
     /**

@@ -15,6 +15,8 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $product = Product::all();   
+        return view('layouts.product', ['Product' => $product]);
     }
 
     /**
@@ -25,6 +27,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('layouts.productCreate');
     }
 
     /**
@@ -58,6 +61,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        return view('layouts.productEdit');
     }
 
     /**

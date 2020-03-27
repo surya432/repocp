@@ -14,8 +14,9 @@ class MitraController extends Controller
      */
     public function index()
     {
-        //       
-         return view('layouts.mitra');
+        //    
+        $mitra = Mitra::all();   
+         return view('layouts.mitra', ['Mitra' => $mitra]);
 
     }
 
@@ -61,6 +62,7 @@ class MitraController extends Controller
     public function edit(Mitra $mitra)
     {
         //
+        return view('layouts.mitraEdit');
     }
 
     /**
