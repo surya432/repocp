@@ -20,10 +20,9 @@
                 </div>
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Images</label>
-                    <div class="col-2">
-                        <input class="form-control" type="email" value="" id="example-email-input">
+                    <div class="col-6">
+                        <input class="form-control" type="file" value="" id="example-email-input">
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Telusuri">
                 </div>
 
 

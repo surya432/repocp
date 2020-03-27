@@ -14,12 +14,6 @@
 
                 <!-- /.box-body -->
                 <div class="form-group row">
-                    <label for="example-text-input" class="col-2 col-form-label">ID</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value="" id="example-text-input">
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Nama</label>
                     <div class="col-10">
                         <input class="form-control" type="search" value="" id="example-search-input">
@@ -27,10 +21,9 @@
                 </div>
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Images</label>
-                    <div class="col-2">
-                        <input class="form-control" type="email" value="" id="example-email-input">
+                    <div class="col-6">
+                        <input class="form-control" type="file" value="" id="example-email-input">
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Telusuri">
                 </div>
 
 

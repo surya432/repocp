@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'PT Afan Logam Lestari',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>PT.</b>Afan Logam Lestari',
+    'logo_img' => 'http://localhost/all/public/img/logo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -173,16 +173,16 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'home/blog',
-            'can'  => 'manage-blog',
-        ],
+        // [
+        //     'text' => 'search',
+        //     'search' => false,
+        //     'topnav' => false,
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'home/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         [
             'text'        => 'Perijinan',
             'url'         => 'home/perijinan',

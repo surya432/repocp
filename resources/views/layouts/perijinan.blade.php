@@ -11,21 +11,21 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <p class="mb-0">Data Perijinan</p>
-
+                <p class="mb-0"> <a class="btn btn-primary btn-sm" href="{{ route('perijinan.create') }}">Tambah
+                        Perijinan</a></p>
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
                 <!-- Table -->
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box">
-                                <a class="btn btn-primary btn-sm" href="{{ route('perijinan.create') }}">Tambah
-                                    Perijinan</a>
-                                @if ($message = Session::get('success'))
-                                <div class="alert alert-success alert-block">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>{{ $message }}</strong>
-                                </div>
-                                @endif
+
+
                                 <div class="box-body table-responsive">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>

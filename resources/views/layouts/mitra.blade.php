@@ -18,7 +18,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box">
-
+                            <a class="btn btn-primary btn-sm" href="{{ route('mitra.create') }}">Tambah
+                                    Perijinan</a>
+                                @if ($message = Session::get('success'))
+                                <div class="alert alert-success alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                                @endif
                                 <div class="box-body table-responsive">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
@@ -26,8 +33,6 @@
                                                 <th width=10%>ID</th>
                                                 <th width=20%>Nama</th>
                                                 <th width=15%>Images</th>
-                                                <th width=20%>Created At</th>
-                                                <th width=20%>Update At</th>
                                                 <th width=25%>Actions</th>
                                             </tr>
                                         </thead>
@@ -37,12 +42,10 @@
                                             <tr>
                                                 <td>{{$key->id}}</td>
                                                 <td>{{$key->nama}}</td>
-                                                <td>{{$key->images}}</td>
-                                                <td>{{$key->created_at}}</td>
                                                 <td>{{$key->update_at}}</td>
                                                 <td>
                                                     <a href="#">Delete</a> |
-                                                    <a href="{{ route('mitraEdit') }}">Update</a>
+                                                    <a href="{{ route('mitra.edit') }}">Update</a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -59,8 +62,7 @@
 
                 </section><!-- /.content -->
                 <!-- End Table -->
-                <a class="nav-link" href="{{ route('mitraCreate') }}"><input type="submit" class="btn btn-primary"
-                        value="Tambah Data"></a>
+               
             </div>
         </div>
     </div>
