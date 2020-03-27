@@ -39,6 +39,23 @@ class PerijinanController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'nama' => 'required|unique:perijinans|max:255',
+            'kepanjangan' => 'required|unique:perijinans',
+            'nomor' => 'required',
+        ]);
+        $perijinan = new \App\Perijinan;
+        $perijinan->nama = $request->input('nama');
+        $perijinan->kepanjangan = $request->input('kepanjangan');
+        $perijinan->nomor = $request->input('nomor');
+        if ($request->hasFile('images')) {
+            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $request->images->move(public_path('images'), $imageName);
+            $perijinan->images = $imageName;
+        }
+        $perijinan->save();
+        return  redirect()->route('perijinan.index')
+            ->with('success','Berhasil Di Simpan');
     }
 
     /**
@@ -61,7 +78,8 @@ class PerijinanController extends Controller
     public function edit(Perijinan $perijinan)
     {
         //
-        return view('layouts.perijinanEdit');
+        // dd($perijinan);
+        return view('layouts.perijinanEdit',compact('perijinan'));
     }
 
     /**
@@ -74,6 +92,23 @@ class PerijinanController extends Controller
     public function update(Request $request, Perijinan $perijinan)
     {
         //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'kepanjangan' => 'required',
+            'nomor' => 'required',
+        ]);
+        $perijinan = \App\Perijinan::find($perijinan->id);
+        $perijinan->nama = $request->input('nama');
+        $perijinan->kepanjangan = $request->input('kepanjangan');
+        $perijinan->nomor = $request->input('nomor');
+        if ($request->hasFile('images')) {
+            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $request->images->move(public_path('images'), $imageName);
+            $perijinan->images = $imageName;
+        }
+        $perijinan->save();
+        return  redirect()->route('perijinan.index')
+            ->with('success','Berhasil Di Simpan');
     }
 
     /**
@@ -85,5 +120,8 @@ class PerijinanController extends Controller
     public function destroy(Perijinan $perijinan)
     {
         //
+        $perijinan->delete();
+        return  redirect()->route('perijinan.index')
+            ->with('success','Berhasil Di Hapus');
     }
 }

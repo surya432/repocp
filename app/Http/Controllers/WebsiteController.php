@@ -10,7 +10,9 @@ class WebsiteController extends Controller
     //
     function index(){
         $Setting = \App\General::all();
-        return view("welcome",compact('Setting'));
+        $perijinan  = \App\Perijinan::take(6)->orderBy('created_at','desc')->get();
+        // dd($perijinan );
+        return view("welcome",compact('Setting','perijinan'));
     }
     public static function getMeta($name,$data){
         $databack = "";

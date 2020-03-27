@@ -21,10 +21,13 @@ Auth::routes();
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+Route::prefix('/home')->group(function () {
+    Route::resource('perijinan', 'PerijinanController');
+});
 Route::get('/home/setting','WebsiteController@setting')->name("setting")->middleware('auth');
-Route::get('/home/perijinan','PerijinanController@index')->name("perijinan")->middleware('auth');
-Route::get('/home/perijinan/create','PerijinanController@Create')->name("perijinanCreate")->middleware('auth');
-Route::get('/home/perijinan/edit','PerijinanController@Edit')->name("perijinanEdit")->middleware('auth');
+// Route::get('/home/perijinan','PerijinanController@index')->name("perijinan")->middleware('auth');
+// Route::POST('/home/perijinan/create','PerijinanController@Create')->name("perijinanCreate")->middleware('auth');
+// Route::POST('/home/perijinan/edit','PerijinanController@Edit')->name("perijinanEdit")->middleware('auth');
 Route::get('/home/product','ProductController@index')->name("Product")->middleware('auth');
 Route::get('/home/product/create','ProductController@create')->name("ProductCreate")->middleware('auth');
 Route::get('/home/product/edit','ProductController@edit')->name("ProductEdit")->middleware('auth');
