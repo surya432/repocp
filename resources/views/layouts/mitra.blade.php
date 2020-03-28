@@ -31,7 +31,7 @@
                                         <thead>
                                             <tr>
                                                 <th width=5%>ID</th>
-                                                <th >Nama</th>
+                                                <th>Nama</th>
                                                 <th width=>Logo Mitra</th>
                                                 <th width=15%>Actions</th>
                                             </tr>
@@ -42,7 +42,8 @@
                                             <tr>
                                                 <td>{{$key->id}}</td>
                                                 <td>{{$key->nama}}</td>
-                                                <td><img class="text-center" src="{{ url('/images/'.$key->images) }}" width="90ox"></td>
+                                                <td><img class="text-center" src="{{ url('/images/'.$key->images) }}"
+                                                        width="90ox"></td>
                                                 <td>
                                                     <div class="btn-group">
 
@@ -52,6 +53,7 @@
                                                         {{ Form::close()}}
                                                         {{ Form::open(array('route' => ['mitra.destroy',$key->id],'method'=>'delete','role' => 'form', 'id' => 'my_form')) }}
                                                         <button class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('Yakin Ingin Menghapus?')"
                                                             type="submit">Hapus</button>
                                                         {{ Form::close()}}
                                                     </div>
@@ -76,4 +78,5 @@
         </div>
     </div>
 </div>
+
 @stop

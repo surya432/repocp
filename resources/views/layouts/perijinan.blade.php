@@ -54,6 +54,7 @@
                                                         {{ Form::close()}}
                                                         {{ Form::open(array('route' => ['perijinan.destroy',$key->id],'method'=>'delete','role' => 'form', 'id' => 'my_form')) }}
                                                         <button class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('Yakin Ingin Menghapus?')"
                                                             type="submit">Hapus</button>
                                                         {{ Form::close()}}
                                                     </div>
@@ -73,9 +74,4 @@
         </div>
     </div>
 </div>
-@stop
-@section('js')
-<script>
-console.log('Hi!');
-</script>
 @stop
