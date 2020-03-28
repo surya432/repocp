@@ -485,12 +485,12 @@
                                     </p>
                                     <ul class="list-inline social-buttons">
                                         <li class="list-inline-item">
-                                            <a href="{!! WebsiteController::getMeta('twitter',$Setting) !!}">
-                                                <i class="fab fa-twitter"></i>
+                                            <a href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20" target="_blank">
+                                                <i class="fab fa-whatsapp"></i>
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a href="{!! WebsiteController::getMeta('facebook',$Setting) !!}">
+                                            <a href="https://facebook.com/{!! WebsiteController::getMeta('facebook',$Setting) !!}" target="_blank">
                                                 <i class="fab fa-facebook-f"></i>
                                             </a>
                                         </li>

@@ -83,13 +83,13 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         \App\General::create([
             "key"=>"facebook",
-            "value"=>"https://facebook/suryaheho",
+            "value"=>"people/Afan-Logam-Lestari/100009219022758",
             "flag"=>"Facebook",
         ]);
         \App\General::create([
-            "key"=>"facebook",
-            "value"=>"  ",
-            "flag"=>"Facebook",
+            "key"=>"twitter",
+            "value"=>"",
+            "flag"=>"Twitter",
         ]);
         \App\Perijinan::create([
             "nama"=>"NPWP",
