@@ -18,6 +18,8 @@ class CreateMitrasTable extends Migration
             $table->String('nama');
             $table->String('images');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

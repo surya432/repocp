@@ -16,7 +16,7 @@ class MitraController extends Controller
     {
         //    
         $mitra = Mitra::all();   
-         return view('layouts.mitra', ['Mitra' => $mitra]);
+        return view('layouts.mitra', ['Mitra' => $mitra]);
 
     }
 
@@ -40,6 +40,21 @@ class MitraController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = $request->validate([
+            'nama' => 'required|unique:perijinans|max:255',
+            'images' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+       
+        $mitra = new \App\Mitra;
+        $mitra->nama = $request->input('nama');
+        if ($request->hasFile('images')) {
+            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $request->images->move(public_path('images'), $imageName);
+            $mitra->images = $imageName;
+        }
+        $mitra->save();
+        return  redirect()->route('mitra.index')
+            ->with('success','Berhasil Di Simpan');
     }
 
     /**
@@ -51,6 +66,7 @@ class MitraController extends Controller
     public function show(Mitra $mitra)
     {
         //
+        
     }
 
     /**
@@ -62,7 +78,7 @@ class MitraController extends Controller
     public function edit(Mitra $mitra)
     {
         //
-        return view('layouts.mitraEdit');
+        return view('layouts.mitraEdit',compact('mitra'));
     }
 
     /**
@@ -75,6 +91,20 @@ class MitraController extends Controller
     public function update(Request $request, Mitra $mitra)
     {
         //
+        $validatedData = $request->validate([
+            'nama' => 'required|unique:perijinans|max:255',
+           
+        ]);
+        $mitra = \App\Mitra::find($mitra->id);
+        $mitra->nama = $request->input('nama');
+        if ($request->hasFile('images')) {
+            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $request->images->move(public_path('images'), $imageName);
+            $mitra->images = $imageName;
+        }
+        $mitra->save();
+        return  redirect()->route('mitra.index')
+            ->with('success','Berhasil Di Update');
     }
 
     /**
@@ -86,5 +116,8 @@ class MitraController extends Controller
     public function destroy(Mitra $mitra)
     {
         //
+        $mitra->delete();
+        return  redirect()->route('mitra.index')
+            ->with('success','Mitra Behasil Di Hapus');
     }
 }

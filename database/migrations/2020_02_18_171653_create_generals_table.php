@@ -19,6 +19,8 @@ class CreateGeneralsTable extends Migration
             $table->string('value')->nullable();
             $table->string('flag')->nullable();            
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -89,5 +89,20 @@ class RolesAndPermissionsSeeder extends Seeder
             "value"=>"  ",
             "flag"=>"Facebook",
         ]);
+        \App\Perijinan::create([
+            "nama"=>"NPWP",
+            "kepanjangan"=>"Nomor Pokok Wajib Pajak",
+            "nomor"=>"84.796.467.3-602.000",
+        ]);
+        \App\Perijinan::create([
+            "nama"=>"TDP",
+            "kepanjangan"=>"Tanda Daftar Perusahaan",
+            "nomor"=>"132014700203",
+        ]);
+        \App\Perijinan::create([
+            "nama"=>"SIUP",
+            "kepanjangan"=>"Surat Ijin Usaha Perdagangan",
+            "nomor"=>"517/0780/415.35/2018",
+        ]);
     }
 }

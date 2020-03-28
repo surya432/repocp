@@ -11,24 +11,41 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> ada masalah input data!.
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                {!! Form::open(array('route' => ['mitra.store'],'method'=>'POST','role' =>
+                'form','autocomplete'=>'off', 'id' => 'my_form','enctype'=>"multipart/form-data")) !!}
                 <!-- /.box-body -->
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Nama</label>
                     <div class="col-10">
-                        <input class="form-control" type="search" value="" id="example-search-input">
+                        <input class="form-control" type="search" value="" name="nama">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="example-email-input" class="col-2 col-form-label">Images</label>
+                    <label for="example-email-input" class="col-2 col-form-label">Logo Mitra</label>
                     <div class="col-6">
-                        <input class="form-control" type="file" value="" id="example-email-input">
+                        <input class="form-control" type="file" value="" name="images">
                     </div>
                 </div>
-
-
                 <!-- /.End -->
-                <input type="submit" class="btn btn-primary" value="Tambah Data">
+                <button type="submit" id="saveBtn" value="create"
+                    class="btn btn-primary btn-submit btn-action">Simpan</button>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

@@ -18,8 +18,9 @@ class CreatePerijinansTable extends Migration
             $table->String('nama');
             $table->String('kepanjangan');
             $table->String('nomor');
-            $table->String('images')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

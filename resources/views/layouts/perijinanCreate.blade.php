@@ -48,12 +48,7 @@
                         <input class="form-control" type="text" value="" name="nomor">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="example-email-input" class="col-2 col-form-label">Images</label>
-                    <div class="col-6">
-                        <input class="form-control" type="file" value="" name="images">
-                    </div>
-                </div>
+                
                 <!-- /.End -->
                 <button type="submit" id="saveBtn" value="create"
                     class="btn btn-primary btn-submit btn-action">Simpan</button>

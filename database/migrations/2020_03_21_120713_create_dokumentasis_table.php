@@ -19,6 +19,8 @@ class CreateDokumentasisTable extends Migration
             $table->String('diskripsi');
             $table->String('tanggal');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

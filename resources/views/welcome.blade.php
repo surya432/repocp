@@ -233,13 +233,24 @@
                 </div>
             </div>
             <div class="row">
+            @if(!is_null($mitra))
+                @foreach($mitra as $a =>$b)
                 <div class="col-sm-4 margin-auto">
+                    <div class="team-member">
+                        <img class="mx-auto" src="{{ url('/images/'.$b['images']) }}" alt="{{ $b['nama'] }}">
+                        <h4>{{ $b['nama'] }}</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+                @endforeach
+                @endif
+                <!-- <div class="col-sm-4 margin-auto">
                     <div class="team-member">
                         <img class="mx-auto" src="img/mitra/4.png" alt="">
                         <h4>PT. Molten Alumunium Producer Indonesia</h4>
                         <p class="text-muted"></p>
                     </div>
-                </div>
+                </div> -->
             </div>
     </section>
     <!-- Perijinan -->
