@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('/home')->group(function () {
         Route::resource('perijinan', 'PerijinanController');
         Route::resource('mitra', 'MitraController');
+        Route::resource('product', 'ProductController');
     });
 });
 
@@ -32,9 +33,9 @@ Route::get('/home/setting','WebsiteController@setting')->name("setting")->middle
 // Route::get('/home/perijinan','PerijinanController@index')->name("perijinan")->middleware('auth');
 // Route::POST('/home/perijinan/create','PerijinanController@Create')->name("perijinanCreate")->middleware('auth');
 // Route::POST('/home/perijinan/edit','PerijinanController@Edit')->name("perijinanEdit")->middleware('auth');
-Route::get('/home/product','ProductController@index')->name("Product")->middleware('auth');
-Route::get('/home/product/create','ProductController@create')->name("ProductCreate")->middleware('auth');
-Route::get('/home/product/edit','ProductController@edit')->name("ProductEdit")->middleware('auth');
+//Route::get('/home/product','ProductController@index')->name("Product")->middleware('auth');
+//Route::get('/home/product/create','ProductController@create')->name("ProductCreate")->middleware('auth');
+//Route::get('/home/product/edit','ProductController@edit')->name("ProductEdit")->middleware('auth');
 Route::get('/home/dokumentasi','DokumentasiController@index')->name("dokumentasi")->middleware('auth');
 Route::get('/home/dokumentasi/create','DokumentasiController@create')->name("dokumentasiCreate")->middleware('auth');
 Route::get('/home/dokumentasi/edit','DokumentasiController@edit')->name("dokumentasiEdit")->middleware('auth');

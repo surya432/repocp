@@ -39,6 +39,25 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'nama' => 'required|unique:products|max:255',
+            'deskripsi' => 'required|unique:products',
+            'keterangan' => 'required',
+            'images' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+           
+        ]);
+        $product = new \App\Product;
+        $product->nama = $request->input('nama');
+        $product->deskripsi = $request->input('deskripsi');
+        $product->keterangan = $request->input('keterangan');
+        if ($request->hasFile('images')) {
+            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $request->images->move(public_path('images'), $imageName);
+            $product->images = $imageName;
+        }
+        $product->save();
+        return  redirect()->route('product.index')
+            ->with('success','Berhasil Di Simpan');
     }
 
     /**
@@ -61,7 +80,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
-        return view('layouts.productEdit');
+        return view('layouts.productEdit',compact('product'));
     }
 
     /**
@@ -74,6 +93,25 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $validatedData = $request->validate([
+            'nama' => 'required|unique:products|max:255',
+            'deskripsi' => 'required|unique:products',
+            'keterangan' => 'required',
+            'images' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+           
+        ]);
+       $product  = \App\Product::find($product->id);
+       $product->nama = $request->input('nama');
+       $product->deskripsi = $request->input('deskripsi');
+       $product->keterangan = $request->input('keterangan');
+        if ($request->hasFile('images')) {
+            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $request->images->move(public_path('images'), $imageName);
+           $product->images = $imageName;
+        }
+        $product->save();
+        return  redirect()->route('product.index')
+            ->with('success','Berhasil Di Simpan');
     }
 
     /**
@@ -85,5 +123,9 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+          //
+          $product->delete();
+          return  redirect()->route('product.index')
+              ->with('success','Berhasil Di Hapus');
     }
 }

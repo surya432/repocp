@@ -19,7 +19,7 @@
                         <div class="col-md-12">
                             <div class="box">
                                 <a class="btn btn-primary btn-sm" href="{{ route('mitra.create') }}">Tambah
-                                    Perijinan</a>
+                                    Mitra</a>
                                 @if ($message = Session::get('success'))
                                 <div class="alert alert-success alert-block">
                                     <button type="button" class="close" data-dismiss="alert">×</button>

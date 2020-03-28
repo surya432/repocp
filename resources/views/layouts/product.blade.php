@@ -11,8 +11,14 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <p class="mb-0">Data Produk</p>
-
+            <p class="mb-0"> <a class="btn btn-primary btn-sm" href="{{ route('product.create') }}">Tambah
+                        Produk</a></p>
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
                 <!-- Table -->
                 <section class="content">
                     <div class="row">
@@ -28,8 +34,6 @@
                                                 <th width=25%>Deskripsi</th>
                                                 <th width=15%>Keterangan</th>
                                                 <th width=10%>Images</th>
-                                                <th width=10%>Created At</th>
-                                                <th width=10%>Update At</th>
                                                 <th width=15%>Actions</th>
                                             </tr>
                                         </thead>
@@ -42,11 +46,19 @@
                                                 <td>{{$key->deskripsi}}</td>
                                                 <td>{{$key->keterangan}}</td>
                                                 <td>{{$key->images}}</td>
-                                                <td>{{$key->created_at}}</td>
-                                                <td>{{$key->update_at}}</td>
                                                 <td>
-                                                    <a href="#">Delete</a> |
-                                                    <a href="{{ route('ProductEdit') }}">Update</a>
+                                                <div class="btn-group">
+
+{{ Form::open(array('route' => ['product.edit',$key->id],'method'=>'get','role' => 'form', 'id' => 'my_form')) }}
+<button class="btn btn-sm btn-edit btn-warning"
+    href="">Edit</button>
+{{ Form::close()}}
+{{ Form::open(array('route' => ['product.destroy',$key->id],'method'=>'delete','role' => 'form', 'id' => 'my_form')) }}
+<button class="btn btn-sm btn-danger"
+onclick="return confirm('Yakin Ingin Menghapus?')"
+    type="submit">Hapus</button>
+{{ Form::close()}}
+</div>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -63,8 +75,7 @@
 
                 </section><!-- /.content -->
                 <!-- End Table -->
-                <a class="nav-link" href="{{ route('ProductCreate') }}"><input type="submit" class="btn btn-primary"
-                        value="Tambah Data"></a>
+               
             </div>
         </div>
     </div>

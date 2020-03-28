@@ -41,7 +41,7 @@ class MitraController extends Controller
     {
         //
         $validator = $request->validate([
-            'nama' => 'required|unique:perijinans|max:255',
+            'nama' => 'required|unique:mitras|max:255',
             'images' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
        
