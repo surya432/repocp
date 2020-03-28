@@ -74,8 +74,7 @@
                 </div>
                 <div class="intro-lead-in">{{WebsiteController::getMeta('siteDescription2',$Setting)}}</div>
                 <a class="btn btn-yellow js-scroll-trigger"
-                    href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Hubungi
-                    Kami</a>
+                    href="https://api.whatsapp.com/send?phone={{ WebsiteController::getMeta('phoneWA',$Setting) }}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Hubungi Kami</a>
             </div>
         </div>
     </header>

@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use \Spatie\Permission\Models\Permission;
 use \Spatie\Permission\Models\Role;
+use Carbon\Carbon;
+
 class RolesAndPermissionsSeeder extends Seeder
 {
     /**
@@ -104,5 +106,37 @@ class RolesAndPermissionsSeeder extends Seeder
             "kepanjangan"=>"Surat Ijin Usaha Perdagangan",
             "nomor"=>"517/0780/415.35/2018",
         ]);
+        $now = Carbon::now()->toDateTimeString();
+
+        \App\Product::create(
+            array(
+            "nama"=>"Transportasi",
+            "deskripsi"=>"Menerima Jasa Pengangkutan limbah B3 dengan standart SOP yang sesuai dengan K3",
+            "keterangan"=>"Menerima Jasa Pengangkutan limbah B3 dengan standart SOP yang sesuai dengan K3",
+            "images"=>"product01.png",
+           ),
+        );
+        \App\Product::create(
+            array(
+                "nama"=>"Spectro",
+                "deskripsi"=>"Alat Pengukuran Kadar dan jenis logam pada suatu ingot yang terkomputerisasi dan akurat agar sesuai kebutuhan perusahaan Mitra Kerja",
+                "keterangan"=>"Alat Pengukuran Kadar dan jenis logam pada suatu ingot yang terkomputerisasi dan akurat agar sesuai kebutuhan perusahaan Mitra Kerja",
+                "images"=>"product02.png",
+            ),
+        );
+        \App\Product::create(
+            array(
+                "nama"=>"Pemanfaatan",
+                "deskripsi"=>"Pemanfaatan dan pengolahan Limbah B3 seperti Scrap, Drag dan Slag Untuk menjadi Aluminium yang berkualitas",
+                "keterangan"=>"Pemanfaatan dan pengolahan Limbah B3 seperti Scrap, Drag dan Slag Untuk menjadi Aluminium yang berkualitas",
+                "images"=>"product03.png",
+            ),
+        );
+        \App\Mitra::create(
+            array(
+               "nama"=>"PT. Molten Alumunium Producer Indonesia",
+               "images"=>"1585395244.png"
+            ),
+        );
     }
 }
