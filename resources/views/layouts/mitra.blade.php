@@ -43,7 +43,7 @@
                                                 <td>{{$key->id}}</td>
                                                 <td>{{$key->nama}}</td>
                                                 <td><img class="text-center" src="{{ url('/images/'.$key->images) }}"
-                                                        width="90ox"></td>
+                                                        width="90px" height="40px"></td>
                                                 <td>
                                                     <div class="btn-group">
 

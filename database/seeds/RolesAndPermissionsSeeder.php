@@ -66,7 +66,7 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         \App\General::create([
             "key"=>"phoneWA",
-            "value"=>"+6285706516579",
+            "value"=>"6285706516579",
             "flag"=>"Telepon WA",
         ]);
         \App\General::create([

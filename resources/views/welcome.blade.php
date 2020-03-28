@@ -90,7 +90,19 @@
                 </div>
             </div>
             <div class="row text-center product-anm" data-toggle="modal" href="#dokumentasi">
+            @if(!is_null($product))
+                @foreach($product as $a =>$b)
                 <div class="col-md-4 linkproduk">
+                    <span class="fa-stack fa-4x">
+                        <img class="rounded-circle img-product" src="{!!url("images/".$b['images'])!!}" alt="">
+                    </span>
+                    <br />
+                    <h4 class="service-heading">{!!$b['nama']!!}</h4>
+                    <p>{!!$b['deskripsi']!!}</p>
+                </div>
+                @endforeach
+                @endif
+                <!-- <div class="col-md-4 linkproduk">
                     <span class="fa-stack fa-4x">
                         <img class="rounded-circle img-product" src="img/product/product01.png" alt="">
                     </span>
@@ -115,15 +127,15 @@
                     <h4 class="service-heading">Pemanfaatan</h4>
                     <p>Pemanfaatan dan pengolahan Limbah B3 seperti Scrap, Drag dan Slag Untuk menjadi
                         Aluminium yang berkualitas</p>
-                </div>
+                </div> -->
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
                     <a class="btn btn-blue js-scroll-trigger"
-                        href="https://api.whatsapp.com/send?phone=6285748990057&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Lihat
+                        href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Lihat
                         Detail</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -213,7 +225,7 @@
                         <li class="timeline-inverted add-li">
                             <div class="btn-blue fit-con">
                                 <a
-                                    href="https://api.whatsapp.com/send?phone=6285748990057&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">
+                                    href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">
                                     Be Part Of Our Story!
                                 </a>
                             </div>
@@ -233,7 +245,7 @@
                 </div>
             </div>
             <div class="row">
-            @if(!is_null($mitra))
+                @if(!is_null($mitra))
                 @foreach($mitra as $a =>$b)
                 <div class="col-sm-4 margin-auto">
                     <div class="team-member">
@@ -300,7 +312,7 @@
                 <!-- <div class="row">
         <div class="col-lg-8 mx-auto text-center">
           <a href="">
-            <a class="btn btn-blue js-scroll-trigger" href="https://api.whatsapp.com/send?phone=6285748990057&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Lihat Detail</a>
+            <a class="btn btn-blue js-scroll-trigger" href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Lihat Detail</a>
           </a>
         </div>
       </div> -->
@@ -361,7 +373,7 @@
                         </a>
                         <div class="portfolio-caption">
                             <h4>Transportasi<h4>
-                            <p class="">Aktivitas Pengangkutan Barang</p>
+                                    <p class="">Aktivitas Pengangkutan Barang</p>
                         </div>
                     </div>
                 </div>
@@ -554,7 +566,7 @@
                                     expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
                                 </p>
                                 <a class="btn btn-blue js-scroll-trigger"
-                                    href="https://api.whatsapp.com/send?phone=6285748990057&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
+                                    href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
 
                             </div>
                         </div>
@@ -588,7 +600,7 @@
                                     expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
                                 </p>
                                 <a class="btn btn-blue js-scroll-trigger"
-                                    href="https://api.whatsapp.com/send?phone=6285748990057&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
+                                    href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
                             </div>
                         </div>
                     </div>

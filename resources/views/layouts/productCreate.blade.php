@@ -31,12 +31,7 @@
                 @endif
                 {!! Form::open(array('route' => ['product.store'],'method'=>'POST','role' =>
                 'form','autocomplete'=>'off', 'id' => 'my_form','enctype'=>"multipart/form-data")) !!}
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-2 col-form-label">ID</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value="" id="example-text-input">
-                    </div>
-                </div>
+ 
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Nama</label>
                     <div class="col-10">
@@ -52,7 +47,7 @@
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Keterangan</label>
                     <div class="col-10">
-                        <input class="form-control" type="search" value="" name="keterangan">
+                        <textarea class="form-control" name="keterangan" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">

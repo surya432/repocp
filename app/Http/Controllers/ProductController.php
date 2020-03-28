@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use File;
 
 class ProductController extends Controller
 {
@@ -40,11 +41,9 @@ class ProductController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'nama' => 'required|unique:products|max:255',
-            'deskripsi' => 'required|unique:products',
+            'nama' => 'required|max:255',
+            'deskripsi' => 'required|max:255',
             'keterangan' => 'required',
-            'images' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-           
         ]);
         $product = new \App\Product;
         $product->nama = $request->input('nama');
@@ -94,10 +93,9 @@ class ProductController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'nama' => 'required|unique:products|max:255',
-            'deskripsi' => 'required|unique:products',
+            'nama' => 'required',
+            'deskripsi' => 'required',
             'keterangan' => 'required',
-            'images' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
            
         ]);
        $product  = \App\Product::find($product->id);
@@ -105,6 +103,8 @@ class ProductController extends Controller
        $product->deskripsi = $request->input('deskripsi');
        $product->keterangan = $request->input('keterangan');
         if ($request->hasFile('images')) {
+            File::delete('images/'.$product->images);
+
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
            $product->images = $imageName;

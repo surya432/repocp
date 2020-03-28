@@ -32,27 +32,21 @@
                 {!! Form::open(array('route' => ['product.update',$product->id],'method'=>'PATCH','role' =>
                 'form','autocomplete'=>'off', 'id' => 'my_form','enctype'=>"multipart/form-data")) !!}
                 <div class="form-group row">
-                    <label for="example-text-input" class="col-2 col-form-label">ID</label>
-                    <div class="col-10">
-                        <input class="form-control" type="text" value="{{$product->nama}}" name="id">
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Nama</label>
                     <div class="col-10">
-                        <input class="form-control" type="search"value="{{$product->nama}}" name="nama">
+                        <input class="form-control" type="search" value="{{$product->nama}}" name="nama">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Deskripsi</label>
                     <div class="col-10">
-                        <input class="form-control" type="search" value="{{$product->nama}}" name="deskripsi">
+                        <input class="form-control" type="search" value="{{$product->deskripsi}}" name="deskripsi">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Keterangan</label>
                     <div class="col-10">
-                        <input class="form-control" type="search" value="{{$product->nama}}" name="keterangan">
+                        <textarea class="form-control" name="keterangan" rows="3">{!!$product->keterangan!!}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
