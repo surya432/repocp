@@ -18,7 +18,8 @@ class CreateProductsTable extends Migration
             $table->String('nama');
             $table->string('deskripsi');
             $table->string('keterangan');
-            $table->string('images');
+            $table->string('images')->nullable();
+            $table->string('imagesproduct')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

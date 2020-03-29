@@ -45,6 +45,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="example-email-input" class="col-2 col-form-label">Icon Produk</label>
+                    <div class="col-6">
+                        <input class="form-control" type="file" value="" name="images">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Keterangan</label>
                     <div class="col-10">
                         <textarea class="form-control" name="keterangan" rows="3"></textarea>
@@ -53,7 +59,7 @@
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Gambar Produk</label>
                     <div class="col-6">
-                        <input class="form-control" type="file" value="" name="images">
+                        <input class="form-control" type="file" value="" name="imagesproduct">
                     </div>
                 </div>
 

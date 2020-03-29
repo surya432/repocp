@@ -49,6 +49,11 @@ class ProductController extends Controller
         $product->nama = $request->input('nama');
         $product->deskripsi = $request->input('deskripsi');
         $product->keterangan = $request->input('keterangan');
+        if ($request->hasFile('imagesproduct')) {
+            $imageName = time().'.'.$request->imagesproduct->getClientOriginalExtension();
+            $request->imagesproduct->move(public_path('images'), $imageName);
+            $product->imagesproduct = $imageName;
+        }
         if ($request->hasFile('images')) {
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
@@ -108,6 +113,13 @@ class ProductController extends Controller
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
            $product->images = $imageName;
+        }
+        if ($request->hasFile('imagesproduct')) {
+            File::delete('images/'.$product->imagesproduct);
+
+            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $request->imagesproduct->move(public_path('images'), $imageName);
+           $product->imagesproduct = $imageName;
         }
         $product->save();
         return  redirect()->route('product.index')

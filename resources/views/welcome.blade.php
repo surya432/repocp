@@ -74,7 +74,8 @@
                 </div>
                 <div class="intro-lead-in">{{WebsiteController::getMeta('siteDescription2',$Setting)}}</div>
                 <a class="btn btn-yellow js-scroll-trigger"
-                    href="https://api.whatsapp.com/send?phone={{ WebsiteController::getMeta('phoneWA',$Setting) }}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Hubungi Kami</a>
+                    href="https://api.whatsapp.com/send?phone={{ WebsiteController::getMeta('phoneWA',$Setting) }}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Hubungi
+                    Kami</a>
             </div>
         </div>
     </header>
@@ -88,10 +89,10 @@
                     <h3 class="section-subheading text-muted">Berbagai produk yang kami tawarkan</h3>
                 </div>
             </div>
-            <div class="row text-center product-anm" data-toggle="modal" href="#dokumentasi">
-            @if(!is_null($product))
+            <div class="row text-center product-anm">
+                @if(!is_null($product))
                 @foreach($product as $a =>$b)
-                <div class="col-md-4 linkproduk">
+                <div class="col-md-4 linkproduk"  data-toggle="modal" href="#dokumentasi{{$b['id']}}">
                     <span class="fa-stack fa-4x">
                         <img class="rounded-circle img-product" src="{!!url("images/".$b['images'])!!}" alt="">
                     </span>
@@ -485,12 +486,14 @@
                                     </p>
                                     <ul class="list-inline social-buttons">
                                         <li class="list-inline-item">
-                                            <a href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20" target="_blank">
+                                            <a href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20"
+                                                target="_blank">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a href="https://facebook.com/{!! WebsiteController::getMeta('facebook',$Setting) !!}" target="_blank">
+                                            <a href="https://facebook.com/{!! WebsiteController::getMeta('facebook',$Setting) !!}"
+                                                target="_blank">
                                                 <i class="fab fa-facebook-f"></i>
                                             </a>
                                         </li>
@@ -540,9 +543,9 @@
     </footer>
 
     <!-- Portfolio Modals -->
-
+    @foreach( $product as $a=>$b )
     <!-- Modal 1 -->
-    <div class="portfolio-modal modal fade" id="dokumentasi" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal modal fade" id="dokumentasi{{$b["id"]}}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal">
@@ -555,18 +558,17 @@
                         <div class="col-lg-8 mx-auto">
                             <div class="modal-body">
                                 <!-- Project Details Go Here -->
-                                <h2 class="text-uppercase">Produk</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="img/kegiatan/Uji-emisi-cerobong.jpg" alt="">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Est
-                                    blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi
-                                    sunt officia
-                                    expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
+                                <h2 class="text-uppercase">{{$b['nama']}}</h2>
+                                <p class="item-intro text-muted">{{$b['deskripsi']}}</p>
+                                @if(!empty($b['imagesproduct']))
+                                <img class="img-fluid d-block mx-auto" src="{!!url("images/".$b['imagesproduct'])!!}"
+                                    alt="{{$b['nama']}}">
+                                @endif
+                                <p>
+                                    {{$b['keterangan']}}
                                 </p>
                                 <a class="btn btn-blue js-scroll-trigger"
                                     href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
-
                             </div>
                         </div>
                     </div>
@@ -574,7 +576,7 @@
             </div>
         </div>
     </div>
-
+    @endforeach
     <!-- Modal 2 -->
     <div class="produk-modal modal fade" id="produk" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
