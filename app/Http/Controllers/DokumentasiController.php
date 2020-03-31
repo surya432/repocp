@@ -39,6 +39,22 @@ class DokumentasiController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required|unique:dokumentasis|max:255',
+            'diskripsi' => 'required|unique:dokumentasis',
+            'tanggal' => 'required',
+        ]);
+        $dokumentasi = new \App\Dokumentasi;
+        $dokumentasi->title = $request->input('title');
+        $dokumentasi->diskrpsi = $request->input('diskripsi');
+        $dokumentasi->tanggal = $request->input('tanggal');
+       
+        
+        $dokumentasi->save();
+        return  redirect()->route('dokumentasi.index')
+            ->with('success','Berhasil Di Simpan');
+    
+    
     }
 
     /**
@@ -61,7 +77,7 @@ class DokumentasiController extends Controller
     public function edit(Dokumentasi $dokumentasi)
     {
         //
-        return view('layouts.dokumentasiEdit');
+        return view('layouts.dokumentasiEdit',compact('dokumentai'));
     }
 
     /**
@@ -74,6 +90,22 @@ class DokumentasiController extends Controller
     public function update(Request $request, Dokumentasi $dokumentasi)
     {
         //
+         //
+         $validatedData = $request->validate([
+            'title' => 'required|unique:dokumentasis|max:255',
+            'diskripsi' => 'required|unique:dokumentasis',
+            'tanggal' => 'required',
+        ]);
+        $dokumentasi = new \App\Dokumentasi;
+        $dokumentasi->title = $request->input('title');
+        $dokumentasi->diskrpsi = $request->input('diskripsi');
+        $dokumentasi->tanggal = $request->input('tanggal');
+       
+        
+        $dokumentasi->save();
+        return  redirect()->route('dokumentasi.index')
+            ->with('success','Berhasil Di Simpan');
+    
     }
 
     /**
@@ -84,6 +116,9 @@ class DokumentasiController extends Controller
      */
     public function destroy(Dokumentasi $dokumentasi)
     {
-        //
+        // 
+          $dokumentasi->delete();
+        return  redirect()->route('dokumentasi.index')
+        ->with('success','Berhasil Di Hapus');
     }
 }
