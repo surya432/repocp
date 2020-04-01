@@ -45,6 +45,7 @@
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Isi</label>
                     <div class="col-10">
+
                         <input class="form-control" type="search" value="{{$general->value}}" name="value">
                     </div>
                     <div class="form-group row">

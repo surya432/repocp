@@ -92,7 +92,7 @@
             <div class="row text-center product-anm">
                 @if(!is_null($product))
                 @foreach($product as $a =>$b)
-                <div class="col-md-4 linkproduk"  data-toggle="modal" href="#dokumentasi{{$b['id']}}">
+                <div class="col-md-4 linkproduk" data-toggle="modal" href="#dokumentasi{{$b['id']}}">
                     <span class="fa-stack fa-4x">
                         <img class="rounded-circle img-product" src="{!!url("images/".$b['images'])!!}" alt="">
                     </span>
@@ -151,85 +151,109 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="timeline">
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img/about/about-01.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Tahun 2006</h4>
-                                    <h4 class="subheading">Home Industry</h4>
+                        @for($i =0;$i < count($about);$i++) @if(($i/2) == 1 || $i == 0) <li class="timeline-inverted">@else<li>@endif
+                                <div class="timeline-image">
+                                    <img class="rounded-circle img-fluid" src="{!!url("images/".$about[$i]['images'])!!}" alt="">
                                 </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Pada tahun 2006 kami memulai usaha ini melalui Home Industri
-                                        di daerah Jawa Tengah. Tepatnya di Kelurahan Tambakrejo Jawa Tengah. Selama
-                                        kurang lebih 2 Tahun, kami akhirnya memutuskan pindah ke Jombang untuk
-                                        Pengembangan Usaha.</p>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Tahun {{$about[$i]['year']}}</h4>
+                                        <h4 class="subheading">{{$about[$i]['title']}}</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">{{$about[$i]['deskripsi']}}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img/about/about-02.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Tahun 2008</h4>
-                                    <h4 class="subheading">CV. Afan Logam Lestari</h4>
+                            </li>
+                            @endfor
+                            <!-- <li class="timeline-inverted">
+                                <div class="timeline-image">
+                                    <img class="rounded-circle img-fluid" src="img/about/about-01.jpg" alt="">
                                 </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Pada Tahun 2008 saat awal pindah di Jombang. Kmai masih
-                                        menyewa tempat rekan kerja kami untuk pengembangan usaha ini. Selama 7 bulan
-                                        menyewa tempat, akhirnya kami bisa menemoati tempat yang baru sampai sekarang
-                                        ini. Tepatnya di Dusun Mlaras Desa Mlaras Kecamatan Sumobito Kabupaten Jombang.
-                                        Dari sinilah pengembangan usaha kami terbentuk dan berkembang secara perlahan
-                                        tapi pasti.</p>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Tahun 2006</h4>
+                                        <h4 class="subheading">Home Industry</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">Pada tahun 2006 kami memulai usaha ini melalui Home
+                                            Industri
+                                            di daerah Jawa Tengah. Tepatnya di Kelurahan Tambakrejo Jawa Tengah. Selama
+                                            kurang lebih 2 Tahun, kami akhirnya memutuskan pindah ke Jombang untuk
+                                            Pengembangan Usaha.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img/about/about-03.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Tahun 2017</h4>
-                                    <h4 class="subheading">PT. Afan Logam Lestari</h4>
+                            </li>
+                            <li>
+                                <div class="timeline-image">
+                                    <img class="rounded-circle img-fluid" src="img/about/about-02.jpg" alt="">
                                 </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Selama 9 tahun menjadi CV, pada tahun 2017 regulasi pemerintah
-                                        mengharuskan semua yang melakukan pemanfaatan dan pengolahan limbah harus berupa
-                                        PT. Proses untuk menjadi PT. pun tidak mudah karena harus memenuhi beberapa
-                                        ijin. Kami berjuang dan berusaha untuk mendapatkan semua ijin yang harus
-                                        didapat. Dari Ijin Lokasi di Desa, Provinsi, ijin dari Kementerian Lingkungan
-                                        Hidup dan Kehutanan Republik Indonesia (KLHK) untuk pendirian usaha ini.</p>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Tahun 2008</h4>
+                                        <h4 class="subheading">CV. Afan Logam Lestari</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">Pada Tahun 2008 saat awal pindah di Jombang. Kmai masih
+                                            menyewa tempat rekan kerja kami untuk pengembangan usaha ini. Selama 7 bulan
+                                            menyewa tempat, akhirnya kami bisa menemoati tempat yang baru sampai
+                                            sekarang
+                                            ini. Tepatnya di Dusun Mlaras Desa Mlaras Kecamatan Sumobito Kabupaten
+                                            Jombang.
+                                            Dari sinilah pengembangan usaha kami terbentuk dan berkembang secara
+                                            perlahan
+                                            tapi pasti.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="rounded-circle img-fluid" src="img/about/about-04.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>2019 - Sekarang</h4>
-                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                            </li>
+                            <li class="timeline-inverted">
+                                <div class="timeline-image">
+                                    <img class="rounded-circle img-fluid" src="img/about/about-03.jpg" alt="">
                                 </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">Semua hal besar berasal dari hal kecil. Terjatuh bukan sebuah
-                                        kegagalan, asal terus berjuang dan tidak menyerah. Percayalah akan indah pada
-                                        waktunya.</p>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Tahun 2017</h4>
+                                        <h4 class="subheading">PT. Afan Logam Lestari</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">Selama 9 tahun menjadi CV, pada tahun 2017 regulasi
+                                            pemerintah
+                                            mengharuskan semua yang melakukan pemanfaatan dan pengolahan limbah harus
+                                            berupa
+                                            PT. Proses untuk menjadi PT. pun tidak mudah karena harus memenuhi beberapa
+                                            ijin. Kami berjuang dan berusaha untuk mendapatkan semua ijin yang harus
+                                            didapat. Dari Ijin Lokasi di Desa, Provinsi, ijin dari Kementerian
+                                            Lingkungan
+                                            Hidup dan Kehutanan Republik Indonesia (KLHK) untuk pendirian usaha ini.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted add-li">
-                            <div class="btn-blue fit-con">
-                                <a
-                                    href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">
-                                    Be Part Of Our Story!
-                                </a>
-                            </div>
-                        </li>
+                            </li>
+                            <li>
+                                <div class="timeline-image">
+                                    <img class="rounded-circle img-fluid" src="img/about/about-04.jpg" alt="">
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>Tahun 2019 - Sekarang</h4>
+                                        <h4 class="subheading">Our Humble Beginnings</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">Semua hal besar berasal dari hal kecil. Terjatuh bukan
+                                            sebuah
+                                            kegagalan, asal terus berjuang dan tidak menyerah. Percayalah akan indah
+                                            pada
+                                            waktunya.</p>
+                                    </div>
+                                </div>
+                            </li> -->
+                            <li class="timeline-inverted add-li">
+                                <div class="btn-blue fit-con">
+                                    <a
+                                        href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">
+                                        Be Part Of Our Story!
+                                    </a>
+                                </div>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -497,6 +521,12 @@
                                                 <i class="fab fa-facebook-f"></i>
                                             </a>
                                         </li>
+                                        <li class="list-inline-item">
+                                            <a href="https://twitter.com/{!! WebsiteController::getMeta('twitter',$Setting) !!}"
+                                                target="_blank">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -561,7 +591,7 @@
                                 <h2 class="text-uppercase">{{$b['nama']}}</h2>
                                 <p class="item-intro text-muted">{{$b['deskripsi']}}</p>
                                 @if(!empty($b['imagesproduct']))
-                                <img class="img-fluid d-block mx-auto" src="{!!url("images/".$b['imagesproduct'])!!}"
+                                <img class="img-fluid d-block mx-auto" src="{!!url(" images/".$b['imagesproduct'])!!}"
                                     alt="{{$b['nama']}}">
                                 @endif
                                 <p>

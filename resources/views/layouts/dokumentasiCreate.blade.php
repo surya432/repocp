@@ -33,13 +33,13 @@
                 <div class="form-group row">
                     <label for="nama" class="col-2 col-form-label">Title</label>
                     <div class="col-10">
-                        <input class="form-control" type="nomor" value="" name="tilte" />
+                        <input class="form-control" type="text" value="" name="title" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="kepanjangan" class="col-2 col-form-label">Deskripsi</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" value="" name="diskripsi">
+                    <textarea class="form-control" name="diskripsi" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -48,7 +48,12 @@
                         <input class="form-control" type="text" value="" name="tanggal">
                     </div>
                 </div>
-                
+                <div class="form-group row">
+                    <label for="example-email-input" class="col-2 col-form-label">Gambar Dokumentasi</label>
+                    <div class="col-6">
+                        <input class="form-control" type="file" value="" name="images">
+                    </div>
+                </div>
                 <!-- /.End -->
                 <button type="submit" id="saveBtn" value="create"
                     class="btn btn-primary btn-submit btn-action">Simpan</button>

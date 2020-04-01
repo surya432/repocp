@@ -101,23 +101,21 @@ class ProductController extends Controller
             'nama' => 'required',
             'deskripsi' => 'required',
             'keterangan' => 'required',
-           
         ]);
-       $product  = \App\Product::find($product->id);
-       $product->nama = $request->input('nama');
-       $product->deskripsi = $request->input('deskripsi');
-       $product->keterangan = $request->input('keterangan');
+        $product  = \App\Product::find($product->id);
+        $product->nama = $request->input('nama');
+        $product->deskripsi = $request->input('deskripsi');
+        $product->keterangan = $request->input('keterangan');
         if ($request->hasFile('images')) {
             File::delete('images/'.$product->images);
 
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
-           $product->images = $imageName;
+            $product->images = $imageName;
         }
         if ($request->hasFile('imagesproduct')) {
             File::delete('images/'.$product->imagesproduct);
-
-            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $imageName = time().'.'.$request->imagesproduct->getClientOriginalExtension();
             $request->imagesproduct->move(public_path('images'), $imageName);
            $product->imagesproduct = $imageName;
         }

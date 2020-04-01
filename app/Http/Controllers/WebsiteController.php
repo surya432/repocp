@@ -13,8 +13,8 @@ class WebsiteController extends Controller
         $perijinan  = \App\Perijinan::take(6)->orderBy('created_at','desc')->get();
         $mitra  = \App\Mitra::take(6)->orderBy('created_at','desc')->get();
         $product  = \App\Product::take(3)->orderBy('nama','asc')->get();
-        // dd($perijinan );
-        return view("welcome",compact('Setting','perijinan','mitra','product'));
+        $about  = \App\About::where('flag','active')->take(4)->get();
+        return view("welcome",compact('Setting','perijinan','mitra','product','about'));
     }
     public static function getMeta($name,$data){
         $databack = "";

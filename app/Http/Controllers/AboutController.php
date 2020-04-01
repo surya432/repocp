@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Dokumentasi;
+use App\About;
 use Illuminate\Http\Request;
 
-class DokumentasiController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DokumentasiController extends Controller
     public function index()
     {
         //
-        $Dokumentasi  = Dokumentasi::all();
-        return view('layouts.dokumentasi',compact('Dokumentasi'));
+        $about = About::all();   
+        return view('layouts.about', compact("about"));
     }
 
     /**
@@ -27,8 +27,7 @@ class DokumentasiController extends Controller
     public function create()
     {
         //
-        
-        return view('layouts.dokumentasiCreate');
+        return view('layouts.aboutCreate');   
     }
 
     /**
@@ -39,35 +38,36 @@ class DokumentasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'deskripsi' => 'required',
             'year' => 'required',
+            'flag' => 'required',
+            'images' => 'required',
         ]);
-        $dokumentasi = new \App\Dokumentasi;
-        $dokumentasi->title = $request->input('title');
-        $dokumentasi->deskripsi = $request->input('deskripsi');
-        $dokumentasi->year = $request->input('year');        
+        $product = new \App\About;
+        $product->title = $request->input('title');
+        $product->deskripsi = $request->input('deskripsi');
+        $product->year = $request->input('year');
+        $product->flag = "active";
         if ($request->hasFile('images')) {
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
             $product->images = $imageName;
         }
-        $dokumentasi->save();
-        return  redirect()->route('dokumentasi.index')
+        $product->save();
+        return  redirect()->route('about.index')
             ->with('success','Berhasil Di Simpan');
-    
-    
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Dokumentasi  $dokumentasi
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function show(Dokumentasi $dokumentasi)
+    public function show(About $about)
     {
         //
     }
@@ -75,57 +75,53 @@ class DokumentasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Dokumentasi  $dokumentasi
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dokumentasi $dokumentasi)
+    public function edit(About $about)
     {
         //
-        return view('layouts.dokumentasiEdit',compact('dokumentasi'));
+        return view('layouts.aboutEdit',compact('about'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Dokumentasi  $dokumentasi
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dokumentasi $dokumentasi)
+    public function update(Request $request, About $about)
     {
-        //
-         //
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'deskripsi' => 'required',
-            'tanggal' => 'required',
+            'year' => 'required',
+            'flag' => 'required',
         ]);
-        $dokumentasi =  \App\Dokumentasi::find($dokumentasi->id);
-        $dokumentasi->title = $request->input('title');
-        $dokumentasi->deskripsi = $request->input('deskripsi');
-        $dokumentasi->year = $request->input('tanggal');
+        $product =  \App\About::find($about->id);
+        $product->title = $request->input('title');
+        $product->deskripsi = $request->input('deskripsi');
+        $product->year = $request->input('year');
+        $product->flag = $request->input('flag');
         if ($request->hasFile('images')) {
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
             $product->images = $imageName;
         }
-        $dokumentasi->save();
-        return  redirect()->route('dokumentasi.index')
+        $product->save();
+        return  redirect()->route('about.index')
             ->with('success','Berhasil Di Simpan');
-    
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Dokumentasi  $dokumentasi
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dokumentasi $dokumentasi)
+    public function destroy(About $about)
     {
-        // 
-          $dokumentasi->delete();
-        return  redirect()->route('dokumentasi.index')
-        ->with('success','Berhasil Di Hapus');
+        //
     }
 }

@@ -3,7 +3,7 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-<h1 class="m-0 text-dark">Dokumentasi</h1>
+<h1 class="m-0 text-dark">Tentang Kami</h1>
 @stop
 
 @section('content')
@@ -11,8 +11,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <p class="mb-0"> <a class="btn btn-primary btn-sm" href="{{ route('dokumentasi.create') }}">Tambah
-                        Dokumentasi</a></p>
+                <p class="mb-0"> <a class="btn btn-primary btn-sm" href="{{ route('about.create') }}">Tambah
+                Tentang Kami</a></p>
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block">
                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -31,28 +31,28 @@
                                         <thead>
                                             <tr>
                                                 <th width=5%>ID</th>
-                                                <th width=25%>Nama</th>
+                                                <th width=20%>Nama</th>
                                                 <th width=25%>Deskripsi</th>
-                                                <th width=5%>Tanggal</th>
-                                                <th width=10%>Actions</th>
+                                                <th width=5%>Status</th>
+                                                <th width=15%>Actions</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            @foreach($Dokumentasi as $key)
+                                            @foreach($about as $key)
                                             <tr>
                                                 <td>{{$key->id}}</td>
                                                 <td>{{$key->title}}</td>
-                                                <td>{{$key->deskripsi}}</td>
-                                                <td>{{$key->tanggal}}</td>
+                                                <td>{{ substr($key->deskripsi,0,95) }}...</td>
+                                                <td>{{$key->flag}}</td>
                                                 <td>
                                                     <div class="btn-group">
 
-                                                        {{ Form::open(array('route' => ['dokumentasi.edit',$key->id],'method'=>'get','role' => 'form', 'id' => 'my_form')) }}
+                                                        {{ Form::open(array('route' => ['about.edit',$key->id],'method'=>'get','role' => 'form', 'id' => 'my_form')) }}
                                                         <button class="btn btn-sm btn-edit btn-warning"
                                                             href="">Edit</button>
                                                         {{ Form::close()}}
-                                                        {{ Form::open(array('route' => ['dokumentasi.destroy',$key->id],'method'=>'delete','role' => 'form', 'id' => 'my_form')) }}
+                                                        {{ Form::open(array('route' => ['about.destroy',$key->id],'method'=>'delete','role' => 'form', 'id' => 'my_form')) }}
                                                         <button class="btn btn-sm btn-danger"
                                                         onclick="return confirm('Yakin Ingin Menghapus?')"
                                                             type="submit">Hapus</button>

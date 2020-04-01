@@ -12,6 +12,7 @@ class GeneralController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         //
@@ -75,21 +76,12 @@ class GeneralController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'id' => 'required',
-            'key' => 'required',
             'value' => 'required',
-            'flag' => 'required',
         ]);
-        $general = \App\General::find($general->id);
-        $general->id = $request->input('id');
-        $general->key = $request->input('key');
-        $general->value = $request->input('value');
-        $general->value = $request->input('flag');
-      
-      
-        $general->save();
-        return  redirect()->route('general.index')
-            ->with('success','Berhasil Di Simpan');
+        $generals = \App\General::where("key",$request->input('key'))->first();
+        $generals->value = $request->input('value');
+        $generals->save();
+        return   response()->json("OK", 200);
     }
 
     /**

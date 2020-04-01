@@ -49,7 +49,7 @@ class RolesAndPermissionsSeeder extends Seeder
         \App\General::create([
             "key"=>"siteName",
             "value"=>"PT. Alfan Logam Lestari",
-            "flag"=>"Nama Perusahaan.",
+            "flag"=>"Nama Perusahaan",
         ]);
         \App\General::create([
             "key"=>"siteDescription1",
@@ -136,6 +136,42 @@ class RolesAndPermissionsSeeder extends Seeder
             array(
                "nama"=>"PT. Molten Alumunium Producer Indonesia",
                "images"=>"1585395244.png"
+            ),
+        );
+        \App\About::create(
+            array(
+                "title"=>"Home Industry",
+                "year"=>"2006",
+                "flag"=>"active",
+                "deskripsi"=>"Pada tahun 2006 kami memulai usaha ini melalui Home Industri di daerah Jawa Tengah. Tepatnya di Kelurahan Tambakrejo Jawa Tengah. Selama kurang lebih 2 Tahun, kami akhirnya memutuskan pindah ke Jombang untuk Pengembangan Usaha.",
+                "images"=>"about-01.jpg"
+            ),
+        );
+        \App\About::create(
+            array(
+                "title"=>"CV. Afan Logam Lestari",
+                "year"=>"2008",
+                "flag"=>"active",
+                "deskripsi"=>"Pada Tahun 2008 saat awal pindah di Jombang. Kmai masih menyewa tempat rekan kerja kami untuk pengembangan usaha ini. Selama 7 bulan menyewa tempat, akhirnya kami bisa menemoati tempat yang baru sampai sekarang ini. Tepatnya di Dusun Mlaras Desa Mlaras Kecamatan Sumobito Kabupaten Jombang. Dari sinilah pengembangan usaha kami terbentuk dan berkembang secara perlahan tapi pasti.",
+                "images"=>"about-02.jpg"
+            ),
+        );
+        \App\About::create(
+            array(
+                "title"=>"PT. Afan Logam Lestari",
+                "year"=>"2017",
+                "flag"=>"active",
+                "deskripsi"=>"Selama 9 tahun menjadi CV, pada tahun 2017 regulasi pemerintah mengharuskan semua yang melakukan pemanfaatan dan pengolahan limbah harus berupa PT. Proses untuk menjadi PT. pun tidak mudah karena harus memenuhi beberapa ijin. Kami berjuang dan berusaha untuk mendapatkan semua ijin yang harus didapat. Dari Ijin Lokasi di Desa, Provinsi, ijin dari Kementerian Lingkungan Hidup dan Kehutanan Republik Indonesia (KLHK) untuk pendirian usaha ini.",
+                "images"=>"about-03.jpg"
+            ),
+        );
+        \App\About::create(
+            array(
+                "title"=>"PT. Afan Logam Lestari",
+                "year"=>"2019",
+                "flag"=>"active",
+                "deskripsi"=>"Semua hal besar berasal dari hal kecil. Terjatuh bukan sebuah kegagalan, asal terus berjuang dan tidak menyerah. Percayalah akan indah pada waktunya.",
+                "images"=>"about-04.jpg"
             ),
         );
     }
