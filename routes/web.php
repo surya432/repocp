@@ -27,10 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('mitra', 'MitraController');
         Route::resource('product', 'ProductController');
         Route::resource('dokumentasi', 'DokumentasiController');
+        Route::resource('setting', 'GeneralController');
     });
 });
 
-Route::get('/home/setting','WebsiteController@setting')->name("setting")->middleware('auth');
+//Route::get('/home/setting','WebsiteController@setting')->name("setting")->middleware('auth');
 // Route::get('/home/perijinan','PerijinanController@index')->name("perijinan")->middleware('auth');
 // Route::POST('/home/perijinan/create','PerijinanController@Create')->name("perijinanCreate")->middleware('auth');
 // Route::POST('/home/perijinan/edit','PerijinanController@Edit')->name("perijinanEdit")->middleware('auth');

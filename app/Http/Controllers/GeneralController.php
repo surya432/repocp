@@ -15,6 +15,8 @@ class GeneralController extends Controller
     public function index()
     {
         //
+        $general = General::all();   
+        return view('layouts.setting', ['General' => $general]);
     }
 
     /**
@@ -36,6 +38,7 @@ class GeneralController extends Controller
     public function store(Request $request)
     {
         //
+      
     }
 
     /**
@@ -58,6 +61,7 @@ class GeneralController extends Controller
     public function edit(General $general)
     {
         //
+        return view('layouts.settingEdit',compact('general'));
     }
 
     /**
@@ -70,6 +74,22 @@ class GeneralController extends Controller
     public function update(Request $request, General $general)
     {
         //
+        $validatedData = $request->validate([
+            'id' => 'required',
+            'key' => 'required',
+            'value' => 'required',
+            'flag' => 'required',
+        ]);
+        $general = \App\General::find($general->id);
+        $general->id = $request->input('id');
+        $general->key = $request->input('key');
+        $general->value = $request->input('value');
+        $general->value = $request->input('flag');
+      
+      
+        $general->save();
+        return  redirect()->route('general.index')
+            ->with('success','Berhasil Di Simpan');
     }
 
     /**
