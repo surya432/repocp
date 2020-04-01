@@ -11,36 +11,49 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-
                 <!-- /.box-body -->
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> ada masalah input data!.
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                {!! Form::open(array('route' => ['dokumentasi.store'],'method'=>'POST','role' =>
+                'form','autocomplete'=>'off', 'id' => 'my_form','enctype'=>"multipart/form-data")) !!}
                 <div class="form-group row">
-                    <label for="example-text-input" class="col-2 col-form-label">ID</label>
+                    <label for="nama" class="col-2 col-form-label">Title</label>
                     <div class="col-10">
-                        <input class="form-control" type="text" value="" id="example-text-input">
+                        <input class="form-control" type="nomor" value="" name="tilte" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="example-search-input" class="col-2 col-form-label">Title</label>
+                    <label for="kepanjangan" class="col-2 col-form-label">Deskripsi</label>
                     <div class="col-10">
-                        <input class="form-control" type="search" value="" id="example-search-input">
+                        <input class="form-control" type="text" value="" name="diskripsi">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="example-search-input" class="col-2 col-form-label">Deskripsi</label>
+                    <label for="nomor" class="col-2 col-form-label">Tangal</label>
                     <div class="col-10">
-                        <input class="form-control" type="search" value="" id="example-search-input">
+                        <input class="form-control" type="text" value="" name="tanggal">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="example-search-input" class="col-2 col-form-label">Tanggal</label>
-                    <div class="col-10">
-                        <input class="form-control" type="search" value="" id="example-search-input">
-                    </div>
-                </div>
-
-
+                
                 <!-- /.End -->
-                <input type="submit" class="btn btn-primary" value="Tambah Data">
+                <button type="submit" id="saveBtn" value="create"
+                    class="btn btn-primary btn-submit btn-action">Simpan</button>
+                {!! Form::close() !!}
+
             </div>
         </div>
     </div>
