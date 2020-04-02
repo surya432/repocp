@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->string('imagesproduct')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

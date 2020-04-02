@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{{WebsiteController::getMeta('Keyword1',$Setting)}}">
     <meta name="author" content="{{WebsiteController::getMeta('siteName',$Setting)}}">
+    <meta name="keywords" content="{{WebsiteController::getMeta('siteDescription1',$Setting)}}">
     <title>{{WebsiteController::getMeta('siteName',$Setting)}} - {{WebsiteController::getMeta('Keyword1',$Setting)}}
     </title>
 
@@ -94,7 +95,7 @@
                 @foreach($product as $a =>$b)
                 <div class="col-md-4 linkproduk" data-toggle="modal" href="#dokumentasi{{$b['id']}}">
                     <span class="fa-stack fa-4x">
-                        <img class="rounded-circle img-product" src="{!!url("images/".$b['images'])!!}" alt="">
+                        <img class="rounded-circle img-product" src="{!!url('images/'.$b['images'])!!}" alt="">
                     </span>
                     <br />
                     <h4 class="service-heading">{!!$b['nama']!!}</h4>
@@ -102,32 +103,7 @@
                 </div>
                 @endforeach
                 @endif
-                <!-- <div class="col-md-4 linkproduk">
-                    <span class="fa-stack fa-4x">
-                        <img class="rounded-circle img-product" src="img/product/product01.png" alt="">
-                    </span>
-                    <br />
-                    <h4 class="service-heading">Transportasi</h4>
-                    <p>Menerima Jasa Pengangkutan limbah B3 dengan standart SOP yang sesuai dengan K3</p>
-                </div>
-                <div class="col-md-4 linkproduk" data-toggle="modal" href="#dokumentasi">
-                    <span class="fa-stack fa-4x">
-                        <img class="rounded-circle img-product" src="img/product/product02.png" alt="">
-                    </span>
-                    <br />
-                    <h4 class="service-heading">Spectro</h4>
-                    <p>Alat Pengukuran Kadar dan jenis logam pada suatu ingot yang terkomputerisasi dan akurat
-                        agar sesuai kebutuhan Perushaan Mitra Kerja</p>
-                </div>
-                <div class="col-md-4 linkproduk" data-toggle="modal" href="#dokumentasi">
-                    <span class="fa-stack fa-4x">
-                        <img class="rounded-circle img-product" src="img/product/product03.png" alt="">
-                    </span>
-                    <br />
-                    <h4 class="service-heading">Pemanfaatan</h4>
-                    <p>Pemanfaatan dan pengolahan Limbah B3 seperti Scrap, Drag dan Slag Untuk menjadi
-                        Aluminium yang berkualitas</p>
-                </div> -->
+
             </div>
             <!-- <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
@@ -151,9 +127,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="timeline">
-                        @for($i =0;$i < count($about);$i++) @if(($i/2) == 1 || $i == 0) <li class="timeline-inverted">@else<li>@endif
+                        @for($i =0;$i < count($about);$i++) @if(($i/2)==1 || $i==0) <li class="timeline-inverted">@else
+                            <li>@endif
                                 <div class="timeline-image">
-                                    <img class="rounded-circle img-fluid" src="{!!url("images/".$about[$i]['images'])!!}" alt="">
+                                    <img class="rounded-circle img-fluid"
+                                        src="{!!url('images/'.$about[$i]['images'])!!}" alt="">
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
@@ -166,86 +144,7 @@
                                 </div>
                             </li>
                             @endfor
-                            <!-- <li class="timeline-inverted">
-                                <div class="timeline-image">
-                                    <img class="rounded-circle img-fluid" src="img/about/about-01.jpg" alt="">
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4>Tahun 2006</h4>
-                                        <h4 class="subheading">Home Industry</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p class="text-muted">Pada tahun 2006 kami memulai usaha ini melalui Home
-                                            Industri
-                                            di daerah Jawa Tengah. Tepatnya di Kelurahan Tambakrejo Jawa Tengah. Selama
-                                            kurang lebih 2 Tahun, kami akhirnya memutuskan pindah ke Jombang untuk
-                                            Pengembangan Usaha.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-image">
-                                    <img class="rounded-circle img-fluid" src="img/about/about-02.jpg" alt="">
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4>Tahun 2008</h4>
-                                        <h4 class="subheading">CV. Afan Logam Lestari</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p class="text-muted">Pada Tahun 2008 saat awal pindah di Jombang. Kmai masih
-                                            menyewa tempat rekan kerja kami untuk pengembangan usaha ini. Selama 7 bulan
-                                            menyewa tempat, akhirnya kami bisa menemoati tempat yang baru sampai
-                                            sekarang
-                                            ini. Tepatnya di Dusun Mlaras Desa Mlaras Kecamatan Sumobito Kabupaten
-                                            Jombang.
-                                            Dari sinilah pengembangan usaha kami terbentuk dan berkembang secara
-                                            perlahan
-                                            tapi pasti.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted">
-                                <div class="timeline-image">
-                                    <img class="rounded-circle img-fluid" src="img/about/about-03.jpg" alt="">
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4>Tahun 2017</h4>
-                                        <h4 class="subheading">PT. Afan Logam Lestari</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p class="text-muted">Selama 9 tahun menjadi CV, pada tahun 2017 regulasi
-                                            pemerintah
-                                            mengharuskan semua yang melakukan pemanfaatan dan pengolahan limbah harus
-                                            berupa
-                                            PT. Proses untuk menjadi PT. pun tidak mudah karena harus memenuhi beberapa
-                                            ijin. Kami berjuang dan berusaha untuk mendapatkan semua ijin yang harus
-                                            didapat. Dari Ijin Lokasi di Desa, Provinsi, ijin dari Kementerian
-                                            Lingkungan
-                                            Hidup dan Kehutanan Republik Indonesia (KLHK) untuk pendirian usaha ini.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-image">
-                                    <img class="rounded-circle img-fluid" src="img/about/about-04.jpg" alt="">
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4>Tahun 2019 - Sekarang</h4>
-                                        <h4 class="subheading">Our Humble Beginnings</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p class="text-muted">Semua hal besar berasal dari hal kecil. Terjatuh bukan
-                                            sebuah
-                                            kegagalan, asal terus berjuang dan tidak menyerah. Percayalah akan indah
-                                            pada
-                                            waktunya.</p>
-                                    </div>
-                                </div>
-                            </li> -->
+
                             <li class="timeline-inverted add-li">
                                 <div class="btn-blue fit-con">
                                     <a
@@ -311,35 +210,7 @@
                 </div>
                 @endforeach
                 @endif
-                <!-- <div class="col-md-4">
-          <div class="ijin-box">
-            <img src="img/ijin/ijin.png" alt="">
-            <h4 class="ijin-heading">SIUP (Surat Ijin Usaha Perdagangan)</h4>
-            <p>No. : 517/0780/415.35/2018</p>
-          </div>
-        </div> -->
-                <!-- <div class="col-md-4">
-          <div class="ijin-box">
-            <img src="img/ijin/ijin.png" alt="">
 
-            <h4 class="ijin-heading">TDP (Tanda Daftar Perusahaan)</h4>
-            <p>No. : 132014700203</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="ijin-box">
-            <img src="img/ijin/ijin.png" alt="">
-            <h4 class="ijin-heading">NPWP (Nomor Pokok Wajib Pajak)</h4>
-            <p>No. : 84.796.467.3-602.000</p>
-          </div>
-        </div> -->
-                <!-- <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
-          <a href="">
-            <a class="btn btn-blue js-scroll-trigger" href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Lihat Detail</a>
-          </a>
-        </div>
-      </div> -->
             </div>
     </section>
     </section>
@@ -353,7 +224,10 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item cursor" onclick="openModal();currentSlide(1)">
+                @if(!is_null($dokumentasi))
+                @foreach($dokumentasi as $a =>$b)
+                <div class="col-md-4 col-sm-6 portfolio-item cursor" data-toggle="modal"
+                    onclick="openModal{{$b['id']}}();currentSlide(1)" href="#myModal{{$b['id']}}">
                     <div class="box-portfolio">
                         <a class="portfolio-link">
                             <div class="portfolio-hover">
@@ -361,130 +235,19 @@
                                     Lihat Detail
                                 </div>
                             </div>
-                            <img class="img-fluid" src="img/kegiatan/Uji-emisi-cerobong.jpg" alt="">
+                            <img class="img-fluid" src="{{url('/images/'.$b['images']) }}" alt="{{$b['title']}}">
                         </a>
                         <div class="portfolio-caption">
-                            <h4>Uji Emisi Cerobong<h4>
-                                    <p class="">Pelaksanaan Uji Emisi Cerobong</p>
+                            <h4>{{$b['title']}}<h4>
+                                    <p class="">{{$b['deskripsi']}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item cursor" onclick="openModal();currentSlide(1)">
-                    <div class="box-portfolio">
-                        <a class="portfolio-link">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content">
-                                    Lihat Detail
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg" alt="">
-                        </a>
-                        <div class="portfolio-caption">
-                            <h4>Uji Emisi<h4>
-                                    <p class="">Pelaksanaan Uji Emisi</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item cursor" onclick="openModal();currentSlide(3)">
-                    <div class="box-portfolio">
-                        <a class="portfolio-link">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content">
-                                    Lihat Detail
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="img/kegiatan/Transportasi.jpg" alt="">
-                        </a>
-                        <div class="portfolio-caption">
-                            <h4>Transportasi<h4>
-                                    <p class="">Aktivitas Pengangkutan Barang</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                @endif
+
+
             </div>
-
-            <div id="myModal" class="modal-dokumentasi">
-                <span class="close cursor" onclick="closeModal()">&times;</span>
-                <div class="modal-contentdokumentasi">
-                    <div class="row wrap-small-img">
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
-                                onclick="currentSlide(1)" alt="Nama Project 3">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(2)"
-                                alt="Nama Project 2">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(3)"
-                                alt="Nama Project 1">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
-                                onclick="currentSlide(4)" alt="Nama Project 3">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(5)"
-                                alt="Nama Project 2">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(6)"
-                                alt="Nama Project 1">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
-                                onclick="currentSlide(7)" alt="Nama Project 3">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(8)"
-                                alt="Nama Project 2">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(9)"
-                                alt="Nama Project 1">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
-                                onclick="currentSlide(10)" alt="Nama Project 3">
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <img src="img/kegiatan/Pelaksanaan-uji-emisi.jpg">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="img/kegiatan/Transportasi.jpg">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="img/kegiatan/Uji-emisi-cerobong.jpg">
-                    </div>
-
-
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-                    <div class="caption-container">
-                        <h3 id="caption"></h3>
-                        <p class="font-produk-deskripsi">Use this area to describe your project. Lorem ipsum dolor sit
-                            amet, consectetur adipisicing elit. Est
-                            blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt
-                            officia
-                            expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                        <ul class="list-inline m-b-40">
-                            <li>Date : January 2017</li>
-                            <li>Client : Explore</li>
-                            <li>Category : Graphic Design</li>
-                        </ul>
-                        <button class="btn btn-close-project" data-dismiss="modal" type="button">
-                            <i class="fas fa-times"></i> Close Project</button>
-                        <button class="btn btn-open-project" data-dismiss="modal" type="button">
-                            <i class="fas fa-check"></i> Open Project</button>
-                    </div>
-
-                </div>
-            </div>
-
         </div>
     </section>
     <!-- Contact -->
@@ -591,7 +354,7 @@
                                 <h2 class="text-uppercase">{{$b['nama']}}</h2>
                                 <p class="item-intro text-muted">{{$b['deskripsi']}}</p>
                                 @if(!empty($b['imagesproduct']))
-                                <img class="img-fluid d-block mx-auto" src="{!!url(" images/".$b['imagesproduct'])!!}"
+                                <img class="img-fluid d-block mx-auto" src="{!!url('images/'.$b['imagesproduct'])!!}"
                                     alt="{{$b['nama']}}">
                                 @endif
                                 <p>
@@ -607,97 +370,174 @@
         </div>
     </div>
     @endforeach
-    <!-- Modal 2 -->
-    <div class="produk-modal modal fade" id="produk" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl"></div>
-                    </div>
+
+    @foreach($dokumentasi as $a=>$b)
+<script>
+function openModal{{$b['id']}}() {
+            document.getElementById("myModal{{$b['id']}}").style.display = "block";
+        }
+
+        function closeModal{{$b['id']}}() {
+            document.getElementById("myModal{{$b['id']}}").style.display = "none";
+        }
+</script>
+    <div id="myModal{{$b['id']}}" tabindex="-1" role="dialog" class="modal-dokumentasi">
+        <span class="close cursor"  data-dismiss="modal"  onclick="closeModal{{$b['id']}}()">&times;</span>
+        <div class="modal-contentdokumentasi">
+        @if(count($b['imagesMedia'])>1)
+            <div class="row wrap-small-img">
+                @for($i=0;$i< count($b['imagesMedia']);$i++) 
+                <div class="column img-demo">
+                    <img class="demo cursor" src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}"
+                        onclick="currentSlide({{$i}})" alt="{{$b['title']}}">
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h2 class="text-uppercase">Nama Produk</h2>
-                                <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                <img class="img-fluid d-block mx-auto" src="img/kegiatan/Uji-emisi-cerobong.jpg" alt="">
-                                <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit. Est
-                                    blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi
-                                    sunt officia
-                                    expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
-                                </p>
-                                <a class="btn btn-blue js-scroll-trigger"
-                                    href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
-                            </div>
+                @endfor
+            </div>
+            @for($i=0;$i< count($b['imagesMedia']);$i++) 
+            <div class="mySlides">
+                <img src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}" alt="{{$b['title']}}" />
+            </div>
+            @endfor
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        @else
+        <div class="mySlides">
+            <img src="{{url('/images/'.$b['images']) }}" alt="{{$b['title']}}" />
+        </div>
+        @endif
+        <!-- <div class="row wrap-small-img">
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
+                                onclick="currentSlide(1)" alt="Nama Project 3">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(2)"
+                                alt="Nama Project 2">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(3)"
+                                alt="Nama Project 1">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
+                                onclick="currentSlide(4)" alt="Nama Project 3">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(5)"
+                                alt="Nama Project 2">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(6)"
+                                alt="Nama Project 1">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
+                                onclick="currentSlide(7)" alt="Nama Project 3">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(8)"
+                                alt="Nama Project 2">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(9)"
+                                alt="Nama Project 1">
+                        </div>
+                        <div class="column img-demo">
+                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
+                                onclick="currentSlide(10)" alt="Nama Project 3">
                         </div>
                     </div>
-                </div>
-            </div>
+                    <div class="mySlides">
+                        <img src="img/kegiatan/Pelaksanaan-uji-emisi.jpg">
+                    </div>
+
+                    <div class="mySlides">
+                        <img src="img/kegiatan/Transportasi.jpg">
+                    </div>
+
+                    <div class="mySlides">
+                        <img src="img/kegiatan/Uji-emisi-cerobong.jpg">
+                    </div> -->
+
+
+       
+
+        <div class="caption-container">
+            <h3 id="caption">{{$b['title']}}</h3>
+            <p class="font-produk-deskripsi">{{$b['deskripsi']}}</p>
+            <ul class="list-inline m-b-40">
+                <li>Date : {{$b['tanggal']}}</li>
+            </ul>
+            <button class="btn btn-close-project" data-dismiss="modal" onclick="closeModal{{$b['id']}}()" type="button">
+                <i class="fas fa-times"></i>Close</button>
         </div>
-    </div>
 
+        </div>
+        </div>
+        @endforeach
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Contact form JavaScript -->
+        <script src="js/jqBootstrapValidation.js"></script>
+        <script src="js/contact_me.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Custom scripts for this template -->
+        <script src="js/agency.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            console.log("ready!");
+            $("#carousel").carousel();
 
-    <!-- Contact form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+        });
 
-    <!-- Custom scripts for this template -->
-    <script src="js/agency.min.js"></script>
-    <script type="text/javascript">
-    function openModal() {
-        document.getElementById("myModal").style.display = "block";
-    }
+        // function openModal() {
+        //     document.getElementById("myModal").style.display = "block";
+        // }
 
-    function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-    }
+        // function closeModal() {
+        //     document.getElementById("myModal").style.display = "none";
+        // }
 
-    var slideIndex = 1;
-    showSlides(slideIndex);
+        var slideIndex = 1;
+        showSlides(slideIndex);
 
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("demo");
-        var captionText = document.getElementById("caption");
-        if (n > slides.length) {
-            slideIndex = 1
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
         }
-        if (n < 1) {
-            slideIndex = slides.length
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
         }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i =< dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            console.log(slideIndex);
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        captionText.innerHTML = dots[slideIndex - 1].alt;
-    }
-    </script>
-    </script>
+        </script>
 
 </body>
 

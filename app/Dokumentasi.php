@@ -16,5 +16,9 @@ class Dokumentasi extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+    public function imagesMedia()
+    {
+        return $this->hasMany('App\Media','dokumentasi_id','id');
 
+    }
 }

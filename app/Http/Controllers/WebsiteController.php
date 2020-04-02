@@ -14,7 +14,9 @@ class WebsiteController extends Controller
         $mitra  = \App\Mitra::take(6)->orderBy('created_at','desc')->get();
         $product  = \App\Product::take(3)->orderBy('nama','asc')->get();
         $about  = \App\About::where('flag','active')->take(4)->get();
-        return view("welcome",compact('Setting','perijinan','mitra','product','about'));
+        $dokumentasi  = \App\Dokumentasi::with('imagesMedia')->take(4)->get();
+        // dd($dokumentasi);
+        return view("welcome",compact('Setting','perijinan','mitra','product','about','dokumentasi'));
     }
     public static function getMeta($name,$data){
         $databack = "";

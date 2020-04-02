@@ -39,7 +39,7 @@
                 <div class="form-group row">
                     <label for="kepanjangan" class="col-2 col-form-label">Deskripsi</label>
                     <div class="col-10">
-                    <textarea class="form-control" name="diskripsi" rows="3"></textarea>
+                        <textarea class="form-control" name="deskripsi" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -54,13 +54,47 @@
                         <input class="form-control" type="file" value="" name="images">
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="example-email-input" class="col-2 col-form-label">Gambar Dokumentasi</label>
+                    <div class="col-6">
+                        <div class="input-group control-group increment">
+                            <input type="file" name="filename[]" class="form-control">
+                            <div class="input-group-btn">
+                                <button class="btn btn-success" type="button"><i
+                                        class="glyphicon glyphicon-plus"></i>Add</button>
+                            </div>
+                        </div>
+                        <div class="clone d-none">
+                            <div class="control-group input-group" style="margin-top:10px">
+                                <input type="file" name="filename[]" class="form-control">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-danger" type="button"><i
+                                            class="glyphicon glyphicon-remove"></i> Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- /.End -->
                 <button type="submit" id="saveBtn" value="create"
                     class="btn btn-primary btn-submit btn-action">Simpan</button>
                 {!! Form::close() !!}
-
             </div>
         </div>
     </div>
 </div>
+@stop
+@section("js")
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".btn-success").click(function() {
+        var html = $(".clone").html();
+        $(".increment").after(html);
+    });
+    $("body").on("click", ".btn-danger", function() {
+        $(this).parents(".control-group").remove();
+    });
+
+});
+</script>
 @stop

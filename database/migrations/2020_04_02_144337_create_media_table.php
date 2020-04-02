@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDokumentasisTable extends Migration
+class CreateMediaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDokumentasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('dokumentasis', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('media', function (Blueprint $table) {
+            $table->bigIncrements('id');  
             $table->String('title');
-            $table->String('deskripsi');
-            $table->String('tanggal');
-            $table->String('images')->nullable();
+            $table->String('mime');
+            $table->String('path');
+            $table->String('dokumentasi_id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreateDokumentasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokumentasis');
+        Schema::dropIfExists('media');
     }
 }

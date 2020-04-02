@@ -174,5 +174,86 @@ class RolesAndPermissionsSeeder extends Seeder
                 "images"=>"about-04.jpg"
             ),
         );
+        $dokumentasi1 = \App\Dokumentasi::create(
+            array(
+                "title"=>"Transportasi",
+                "tanggal"=>"2019-02-20",
+                "deskripsi"=>"Aktivitas Pengangkutan Barang",
+                "images"=>"kegiatan/Garasi_Transporter.jpg"
+            ),
+        );
+        \App\Media::Create(
+            array(
+                "title"=>"Aktivitas Pengangkutan Barang",
+                "mime"=>"images/jpg",
+                "path"=>"kegiatan/Garasi_Transporter_2.jpg",
+                "dokumentasi_id"=>$dokumentasi1->id,
+            )
+        );
+        \App\Media::Create(
+            array(
+                "title"=>"Aktivitas Pengangkutan Barang",
+                "mime"=>"images/jpg",
+                "path"=>"kegiatan/Garasi_Transporter.jpg",
+                "dokumentasi_id"=>$dokumentasi1->id,
+            )
+        );
+        \App\Media::Create(
+            array(
+                "title"=>"Aktivitas Pengangkutan Barang",
+                "mime"=>"images/jpg",
+                "path"=>"kegiatan/Transportasi_ALL2.jpg",
+                "dokumentasi_id"=>$dokumentasi1->id,
+            )
+        );
+        \App\Media::Create(
+            array(
+                "title"=>"Aktivitas Pengangkutan Barang",
+                "mime"=>"images/jpg",
+                "path"=>"kegiatan/Transportasi_ALL9.jpg",
+                "dokumentasi_id"=>$dokumentasi1->id,
+            )
+        );
+        \App\Media::Create(
+            array(
+                "title"=>"Aktivitas Pengangkutan Barang",
+                "mime"=>"images/jpg",
+                "path"=>"kegiatan/Transportasi_ALL10.jpg",
+                "dokumentasi_id"=>$dokumentasi1->id,
+            )
+        );
+        $dokumentasi1 = \App\Dokumentasi::create(
+            array(
+                "title"=>"Pelaksanaan Pos Usaha Kesehatan Desa",
+                "tanggal"=>"2019-02-20",
+                "deskripsi"=>"Dengan ini perusahan tidak hanya memberdayakan SDM setempat tetapi mendukung kesehatan bagi warga sekitar pabrik.",
+                "images"=>"kegiatan/Pembentukan_pos_usaha_kesehatan_desa.jpg"
+            ),
+        );
+        
+        $dokumentasi1 = \App\Dokumentasi::create(
+            array(
+                "title"=>"Pelaksanaan Uji Emisi",
+                "tanggal"=>"2019-02-20",
+                "deskripsi"=>"Pelaksanaan Uji Emisi",
+                "images"=>"kegiatan/Pelaksanaan-uji-emisi.jpg"
+            ),
+        );
+        \App\Media::Create(
+            array(
+                "title"=>"Pelaksanaan Uji Emisi",
+                "mime"=>"images/jpg",
+                "path"=>"kegiatan/Pelaksanaan-uji-emisi.jpg",
+                "dokumentasi_id"=>$dokumentasi1->id,
+            )
+        );
+        \App\Media::Create(
+            array(
+                "title"=>"Pelaksanaan Uji Emisi",
+                "mime"=>"images/jpg",
+                "path"=>"kegiatan/Uji-emisi-cerobong.jpg",
+                "dokumentasi_id"=>$dokumentasi1->id,
+            )
+        );
     }
 }

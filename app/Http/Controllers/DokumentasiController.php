@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dokumentasi;
 use Illuminate\Http\Request;
+use File;
 
 class DokumentasiController extends Controller
 {
@@ -43,16 +44,16 @@ class DokumentasiController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'deskripsi' => 'required',
-            'year' => 'required',
+            'tanggal' => 'required',
         ]);
         $dokumentasi = new \App\Dokumentasi;
         $dokumentasi->title = $request->input('title');
         $dokumentasi->deskripsi = $request->input('deskripsi');
-        $dokumentasi->year = $request->input('year');        
+        $dokumentasi->tanggal = $request->input('tanggal');        
         if ($request->hasFile('images')) {
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
-            $product->images = $imageName;
+            $dokumentasi->images = $imageName;
         }
         $dokumentasi->save();
         return  redirect()->route('dokumentasi.index')
@@ -100,16 +101,29 @@ class DokumentasiController extends Controller
             'deskripsi' => 'required',
             'tanggal' => 'required',
         ]);
-        $dokumentasi =  \App\Dokumentasi::find($dokumentasi->id);
-        $dokumentasi->title = $request->input('title');
-        $dokumentasi->deskripsi = $request->input('deskripsi');
-        $dokumentasi->year = $request->input('tanggal');
+        $dokumentasi2 =  \App\Dokumentasi::find($dokumentasi->id);
+        $dokumentasi2->title = $request->input('title');
+        $dokumentasi2->deskripsi = $request->input('deskripsi');
+        $dokumentasi2->tanggal = $request->input('tanggal');
         if ($request->hasFile('images')) {
+            File::delete('images/'.$dokumentasi->images);
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
-            $product->images = $imageName;
+            $dokumentasi2->images = $imageName;
         }
-        $dokumentasi->save();
+        $dokumentasi2->save();
+        if ($request->hasFile('filename')) {
+            foreach ($request->filename as $file) {
+                $name = md5(now()) . $file->getClientOriginalName();
+                $upload_success = $file->move(public_path('images'), $name);
+                try {
+                    $mime = $file->getMimeType();
+                } catch (\Exception $e) {
+                    $mime = $file->getClientMimeType();
+                }
+                \App\Media::create(["title" =>  $name, "path" => "images/$name", "mime" =>  $mime, "dokumentasi_id" => $dokumentasi2->id]);
+            }
+        }
         return  redirect()->route('dokumentasi.index')
             ->with('success','Berhasil Di Simpan');
     

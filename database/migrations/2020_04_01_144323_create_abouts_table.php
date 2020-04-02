@@ -22,7 +22,6 @@ class CreateAboutsTable extends Migration
             $table->string('flag')->default('nonactive');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 
