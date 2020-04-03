@@ -389,7 +389,7 @@ function openModal{{$b['id']}}() {
                 @for($i=0;$i< count($b['imagesMedia']);$i++) 
                 <div class="column img-demo">
                     <img class="demo cursor" src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}"
-                        onclick="currentSlide({{$i}})" alt="{{$b['title']}}">
+                        onclick="currentSlide({{$i+1}})" alt="{{$b['title']}}">
                 </div>
                 @endfor
             </div>
