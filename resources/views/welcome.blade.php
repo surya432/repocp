@@ -402,9 +402,8 @@ function openModal{{$b['id']}}() {
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
         @else
-        <div class="mySlides">
-            <img src="{{url('/images/'.$b['images']) }}" alt="{{$b['title']}}" />
-        </div>
+        <img class="img-fluid d-block mx-auto" src="{!!url('images/'.$b['images'])!!}"
+                                    alt="{{$b['nama']}}">
         @endif
         <!-- <div class="row wrap-small-img">
                         <div class="column img-demo">

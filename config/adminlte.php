@@ -31,7 +31,7 @@ return [
     */
 
     'logo' => '<b>PT.</b>Afan Logam Lestari',
-    'logo_img' => 'http://localhost/all/public/img/logo.png',
+    'logo_img' => 'https://afanlogamlestari.co.id/img/logo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
