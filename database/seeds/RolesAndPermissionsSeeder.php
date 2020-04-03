@@ -48,22 +48,22 @@ class RolesAndPermissionsSeeder extends Seeder
         $user->syncRoles(['super-admin']);
         \App\General::create([
             "key"=>"siteName",
-            "value"=>"PT. Alfan Logam Lestari",
+            "value"=>"PT. Afan Logam Lestari",
             "flag"=>"Nama Perusahaan",
         ]);
         \App\General::create([
             "key"=>"siteDescription1",
-            "value"=>"SOLUSI LIMBAH DROSS, SLAG, SCRAP",
+            "value"=>"SOLUSI LIMBAH DROSS, SLAG, SCRAP Limbah B3",
             "flag"=>"Deskripsi 1",
         ]);
         \App\General::create([
             "key"=>"siteDescription2",
-            "value"=>"Butuh pengolahan, pemanfaatan dan transportasi limbah diatas?",
+            "value"=>"Butuh pengolahan, pemanfaatan dan transportasi limbah B3 diatas?",
             "flag"=>"Deskripsi 2",
         ]);
         \App\General::create([
             "key"=>"Keyword1",
-            "value"=>"Pemanfaatan dan Jasa Transportasi Untuk Limbah B3 Industri dengan standart K3.",
+            "value"=>"Pemanfaatan dan Jasa Transportasi Untuk DROSS, SLAG, SCRAP Limbah B3 Industri dengan standart K3.",
             "flag"=>"Keyword Website",
         ]);
         \App\General::create([
