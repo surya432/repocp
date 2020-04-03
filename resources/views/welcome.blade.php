@@ -529,7 +529,7 @@ function openModal{{$b['id']}}() {
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
-            for (i = 0; i =< dots.length; i++) {
+            for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
             console.log(slideIndex);
