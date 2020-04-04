@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{{WebsiteController::getMeta('siteDescription1',$Setting)}}">
+    <meta name="description" content="{{WebsiteController::getMeta('siteDescription2',$Setting)}}">
     <meta name="author" content="{{WebsiteController::getMeta('siteName',$Setting)}}">
     <meta name="keywords" content="{{WebsiteController::getMeta('Keyword1',$Setting)}}">
     <title>{{WebsiteController::getMeta('siteName',$Setting)}} - {{WebsiteController::getMeta('Keyword1',$Setting)}}
