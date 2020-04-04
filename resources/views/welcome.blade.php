@@ -9,6 +9,9 @@
     <meta name="description" content="{{WebsiteController::getMeta('siteDescription2',$Setting)}}">
     <meta name="author" content="{{WebsiteController::getMeta('siteName',$Setting)}}">
     <meta name="keywords" content="{{WebsiteController::getMeta('Keyword1',$Setting)}}">
+    <link href="{{url('/')}}" rel="canonical">
+    <meta name="robots" content="index, follow">
+
     <title>{{WebsiteController::getMeta('siteName',$Setting)}} - {{WebsiteController::getMeta('Keyword1',$Setting)}}
     </title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
