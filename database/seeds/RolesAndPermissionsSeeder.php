@@ -179,6 +179,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 "title"=>"Transportasi",
                 "tanggal"=>"2019-02-20",
                 "deskripsi"=>"Aktivitas Pengangkutan Barang",
+                "content"=>"Aktivitas Pengangkutan Barang",
                 "images"=>"kegiatan/Garasi_Transporter.jpg"
             ),
         );
@@ -227,15 +228,24 @@ class RolesAndPermissionsSeeder extends Seeder
                 "title"=>"Pelaksanaan Pos Usaha Kesehatan Desa",
                 "tanggal"=>"2019-02-20",
                 "deskripsi"=>"Dengan ini perusahan tidak hanya memberdayakan SDM setempat tetapi mendukung kesehatan bagi warga sekitar pabrik.",
+                "content"=>"Dengan ini perusahan tidak hanya memberdayakan SDM setempat tetapi mendukung kesehatan bagi warga sekitar pabrik.",
                 "images"=>"kegiatan/Pembentukan_pos_usaha_kesehatan_desa.jpg"
             ),
         );
-        
+        \App\Media::Create(
+            array(
+                "title"=>"Pelaksanaan Pos Usaha Kesehatan Desa",
+                "mime"=>"images/jpg",
+                "path"=>"kegiatan/Transportasi_ALL10.jpg",
+                "dokumentasi_id"=>$dokumentasi1->id,
+            )
+        );
         $dokumentasi1 = \App\Dokumentasi::create(
             array(
                 "title"=>"Pelaksanaan Uji Emisi",
                 "tanggal"=>"2019-02-20",
                 "deskripsi"=>"Pelaksanaan Uji Emisi",
+                "content"=>"Pelaksanaan Uji Emisi",
                 "images"=>"kegiatan/Pelaksanaan-uji-emisi.jpg"
             ),
         );

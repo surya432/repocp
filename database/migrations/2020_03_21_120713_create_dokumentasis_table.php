@@ -17,6 +17,7 @@ class CreateDokumentasisTable extends Migration
             $table->bigIncrements('id');
             $table->String('title');
             $table->String('deskripsi');
+            $table->text('content');
             $table->String('tanggal');
             $table->String('images')->nullable();
             $table->timestamps();

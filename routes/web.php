@@ -22,6 +22,9 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
     Route::prefix('/home')->group(function () {
         Route::resource('perijinan', 'PerijinanController');
         Route::resource('mitra', 'MitraController');

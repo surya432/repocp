@@ -358,7 +358,7 @@
                                     alt="{{$b['nama']}}">
                                 @endif
                                 <p>
-                                    {{$b['keterangan']}}
+                                    {!! $b['keterangan'] !!}
                                 </p>
                                 <a class="btn btn-blue js-scroll-trigger"
                                     href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
@@ -386,15 +386,23 @@ function openModal{{$b['id']}}() {
         <div class="modal-contentdokumentasi">
         @if(count($b['imagesMedia'])>1)
             <div class="row wrap-small-img">
+            
+            @php
+            $dataImage =0;
+            @endphp
                 @for($i=0;$i< count($b['imagesMedia']);$i++) 
                 <div class="column img-demo">
+                @php
+{{            $dataImage = $dataImage +1;
+}}            @endphp
                     <img class="demo cursor" src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}"
-                        onclick="currentSlide({{$i+1}})" alt="{{$b['title']}}">
+                        onclick="currentSlide()" alt="{{$b['title']}}">
                 </div>
                 @endfor
             </div>
+            
             @for($i=0;$i< count($b['imagesMedia']);$i++) 
-            <div class="mySlides">
+            <div class="mySlides mySlides{{$b['id']}}">
                 <img src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}" alt="{{$b['title']}}" />
             </div>
             @endfor
@@ -405,62 +413,6 @@ function openModal{{$b['id']}}() {
         <img class="img-fluid d-block mx-auto" src="{!!url('images/'.$b['images'])!!}"
                                     alt="{{$b['nama']}}">
         @endif
-        <!-- <div class="row wrap-small-img">
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
-                                onclick="currentSlide(1)" alt="Nama Project 3">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(2)"
-                                alt="Nama Project 2">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(3)"
-                                alt="Nama Project 1">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
-                                onclick="currentSlide(4)" alt="Nama Project 3">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(5)"
-                                alt="Nama Project 2">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(6)"
-                                alt="Nama Project 1">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
-                                onclick="currentSlide(7)" alt="Nama Project 3">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Transportasi.jpg" onclick="currentSlide(8)"
-                                alt="Nama Project 2">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Uji-emisi-cerobong.jpg" onclick="currentSlide(9)"
-                                alt="Nama Project 1">
-                        </div>
-                        <div class="column img-demo">
-                            <img class="demo cursor" src="img/kegiatan/Pelaksanaan-uji-emisi.jpg"
-                                onclick="currentSlide(10)" alt="Nama Project 3">
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <img src="img/kegiatan/Pelaksanaan-uji-emisi.jpg">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="img/kegiatan/Transportasi.jpg">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="img/kegiatan/Uji-emisi-cerobong.jpg">
-                    </div> -->
-
-
-       
 
         <div class="caption-container">
             <h3 id="caption">{{$b['title']}}</h3>
@@ -495,13 +447,13 @@ function openModal{{$b['id']}}() {
 
         });
 
-        function openModal() {
-            document.getElementById("myModal").style.display = "block";
-        }
+        // function openModal() {
+        //     document.getElementById("myModal").style.display = "block";
+        // }
 
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
+        // function closeModal() {
+        //     document.getElementById("myModal").style.display = "none";
+        // }
 
         var slideIndex = 1;
         showSlides(slideIndex);
@@ -535,6 +487,10 @@ function openModal{{$b['id']}}() {
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active";
             captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+        function addClassImg(){
+            $( "modal-body p img" ).addClass("img-fluid d-block mx-auto");
+
         }
         </script>
 

@@ -47,9 +47,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-search-input" class="col-2 col-form-label">Keterangan</label>
+                            <label for="example-search-input"  class="col-2 col-form-label">Keterangan</label>
                             <div class="col-10">
-                                <textarea class="form-control" name="keterangan"
+                                <textarea class="form-control" id="my-editor" name="keterangan"
                                     rows="6">{!!$product->keterangan!!}</textarea>
                             </div>
                         </div>
@@ -74,4 +74,20 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('js')
+
+<script>
+var options = {
+    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+    
+};
+</script>
+<script>
+CKEDITOR.replace('my-editor', options);
+</script>
 @stop
