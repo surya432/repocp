@@ -43,6 +43,12 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="example-search-input" class="col-2 col-form-label">Content</label>
+                    <div class="col-10">
+                        <textarea class="form-control" id="my-editor"  name="content" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="nomor" class="col-2 col-form-label">Tanggal</label>
                     <div class="col-10">
                         <input class="form-control" type="text" value="{{$dokumentasi->tanggal}}" name="tanggal">
@@ -98,5 +104,18 @@ $(document).ready(function() {
     });
 
 });
+</script>
+
+<script>
+var options = {
+    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+    
+};
+</script>
+<script>
+CKEDITOR.replace('my-editor', options);
 </script>
 @stop

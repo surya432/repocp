@@ -11,15 +11,19 @@
     <meta name="keywords" content="{{WebsiteController::getMeta('Keyword1',$Setting)}}">
     <title>{{WebsiteController::getMeta('siteName',$Setting)}} - {{WebsiteController::getMeta('Keyword1',$Setting)}}
     </title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+        integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="img/logo.png" />
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/pace.js"></script>
+
+    <link href="css/pace.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'> -->
 
     <!-- Custom styles for this template -->
     <link href="css/agency.min.css" rel="stylesheet">
@@ -226,8 +230,7 @@
             <div class="row">
                 @if(!is_null($dokumentasi))
                 @foreach($dokumentasi as $a =>$b)
-                <div class="col-md-4 col-sm-6 portfolio-item cursor" data-toggle="modal"
-                    onclick="openModal{{$b['id']}}();currentSlide(1)" href="#myModal{{$b['id']}}">
+                <div class="col-md-4 col-sm-6 portfolio-item cursor btn-action" data-link="{{route('modalDokumentasi',$b['id'])}}">
                     <div class="box-portfolio">
                         <a class="portfolio-link">
                             <div class="portfolio-hover">
@@ -371,128 +374,98 @@
     </div>
     @endforeach
 
-    @foreach($dokumentasi as $a=>$b)
-<script>
-function openModal{{$b['id']}}() {
-            document.getElementById("myModal{{$b['id']}}").style.display = "block";
-        }
+    <div id="myModal" tabindex="-1" role="dialog" class="modal-dokumentasi">
 
-        function closeModal{{$b['id']}}() {
-            document.getElementById("myModal{{$b['id']}}").style.display = "none";
-        }
-</script>
-    <div id="myModal{{$b['id']}}" tabindex="-1" role="dialog" class="modal-dokumentasi">
-        <span class="close cursor"  data-dismiss="modal"  onclick="closeModal{{$b['id']}}()">&times;</span>
-        <div class="modal-contentdokumentasi">
-        @if(count($b['imagesMedia'])>1)
-            <div class="row wrap-small-img">
-            
-            @php
-            $dataImage =0;
-            @endphp
-                @for($i=0;$i< count($b['imagesMedia']);$i++) 
-                <div class="column img-demo">
-                @php
-{{            $dataImage = $dataImage +1;
-}}            @endphp
-                    <img class="demo cursor" src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}"
-                        onclick="currentSlide()" alt="{{$b['title']}}">
-                </div>
-                @endfor
-            </div>
-            
-            @for($i=0;$i< count($b['imagesMedia']);$i++) 
-            <div class="mySlides mySlides{{$b['id']}}">
-                <img src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}" alt="{{$b['title']}}" />
-            </div>
-            @endfor
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        @else
-        <img class="img-fluid d-block mx-auto" src="{!!url('images/'.$b['images'])!!}"
-                                    alt="{{$b['nama']}}">
-        @endif
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <div class="caption-container">
-            <h3 id="caption">{{$b['title']}}</h3>
-            <p class="font-produk-deskripsi">{{$b['deskripsi']}}</p>
-            <ul class="list-inline m-b-40">
-                <li>Date : {{$b['tanggal']}}</li>
-            </ul>
-            <button class="btn btn-close-project" data-dismiss="modal" onclick="closeModal{{$b['id']}}()" type="button">
-                <i class="fas fa-times"></i>Close</button>
-        </div>
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
 
-        </div>
-        </div>
-        @endforeach
-        <!-- Bootstrap core JavaScript -->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+    <script type="text/javascript">
+    $('body').on('click', '.btn-action', function(elemen) {
+        elemen.preventDefault();
+        showModal($(this))
+        // openModal()
+    });
+    var slideIndex = 1;
 
-        <!-- Plugin JavaScript -->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Contact form JavaScript -->
-        <script src="js/jqBootstrapValidation.js"></script>
-        <script src="js/contact_me.js"></script>
-
-        <!-- Custom scripts for this template -->
-        <script src="js/agency.min.js"></script>
-        <script type="text/javascript">
-        $(document).ready(function() {
-            console.log("ready!");
-            $("#carousel").carousel();
-
+    function showModal(el) {
+        console.log(el);
+        var urls = el.attr('data-link'),
+            title = el.attr('title');
+        $('.modal-title').text(title);
+        axios({
+            url: urls,
+            credentials: true,
+            method: "GET",
+        }).then(response => {
+            // // console.log(response);
+            $('.modal-dokumentasi').html(response.data)
+            // // initElem();
+            showSlides(1);
+            openModal();
+            $('.modal-dokumentasi').modal('show');
+        }).catch(error => {
+            console.log(error);
         });
+    }
 
-        // function openModal() {
-        //     document.getElementById("myModal").style.display = "block";
-        // }
+    function openModal() {
+        document.getElementById("myModal").style.display = "block";
+    }
 
-        // function closeModal() {
-        //     document.getElementById("myModal").style.display = "none";
-        // }
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+        $('#myModal').modal('hide');
 
-        var slideIndex = 1;
-        showSlides(slideIndex);
+    }
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {
+            slideIndex = 1
         }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
+        if (n < 1) {
+            slideIndex = slides.length
         }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            var captionText = document.getElementById("caption");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            console.log(slideIndex);
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            captionText.innerHTML = dots[slideIndex - 1].alt;
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
-        function addClassImg(){
-            $( "modal-body p img" ).addClass("img-fluid d-block mx-auto");
-
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
         }
-        </script>
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+
+    function addClassImg() {
+        $("modal-body p img").addClass("img-fluid d-block mx-auto");
+
+    }
+    </script>
 
 </body>
 

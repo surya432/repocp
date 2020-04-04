@@ -30,4 +30,8 @@ class WebsiteController extends Controller
     function setting(Request $request){
         return view('layouts.setting');
     }
+    function modalDokumentasi(Request $request, $id){
+        $b =   \App\Dokumentasi::where('id',$id)->with('imagesMedia')->first();
+       return view('modalDokumentasi',compact('b'));
+    }
 }

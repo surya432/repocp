@@ -17,6 +17,7 @@
 
 Route::get('/','WebsiteController@index')->name("index");
 Auth::routes();
+Route::get('/modal/dokumentasi/{id}','WebsiteController@modalDokumentasi')->name("modalDokumentasi");
 
 Route::get('/home', function() {
     return view('home');

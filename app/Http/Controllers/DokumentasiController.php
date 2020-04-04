@@ -49,6 +49,7 @@ class DokumentasiController extends Controller
         $dokumentasi = new \App\Dokumentasi;
         $dokumentasi->title = $request->input('title');
         $dokumentasi->deskripsi = $request->input('deskripsi');
+        $dokumentasi->content = $request->input('content');
         $dokumentasi->tanggal = $request->input('tanggal');        
         if ($request->hasFile('images')) {
             $imageName = time().'.'.$request->images->getClientOriginalExtension();
@@ -104,6 +105,7 @@ class DokumentasiController extends Controller
         $dokumentasi2 =  \App\Dokumentasi::find($dokumentasi->id);
         $dokumentasi2->title = $request->input('title');
         $dokumentasi2->deskripsi = $request->input('deskripsi');
+        $dokumentasi2->content = $request->input('content');
         $dokumentasi2->tanggal = $request->input('tanggal');
         if ($request->hasFile('images')) {
             File::delete('images/'.$dokumentasi->images);

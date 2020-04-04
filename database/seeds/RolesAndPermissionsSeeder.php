@@ -53,12 +53,12 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         \App\General::create([
             "key"=>"siteDescription1",
-            "value"=>"SOLUSI LIMBAH DROSS, SLAG, SCRAP Limbah B3",
+            "value"=>"SOLUSI LIMBAH B3 DROSS, SLAG, SCRAP ALUMINIUM",
             "flag"=>"Deskripsi 1",
         ]);
         \App\General::create([
             "key"=>"siteDescription2",
-            "value"=>"Butuh pengolahan, pemanfaatan dan transportasi limbah B3 diatas?",
+            "value"=>"Percayakan Pada Kami Pengolahan, Pemanfaatan dan Transportasi Limbah B3 Dross, Slag dan Scrap Aluminium ( Abu, Rosok Kaleng, Seeker, Plat ).",
             "flag"=>"Deskripsi 2",
         ]);
         \App\General::create([
