@@ -31,7 +31,7 @@
                 @endif
                 {!! Form::open(array('route' => ['product.store'],'method'=>'POST','role' =>
                 'form','autocomplete'=>'off', 'id' => 'my_form','enctype'=>"multipart/form-data")) !!}
- 
+
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Nama</label>
                     <div class="col-10">
@@ -53,7 +53,7 @@
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Keterangan</label>
                     <div class="col-10">
-                        <textarea class="form-control" name="keterangan" rows="3"></textarea>
+                        <textarea class="form-control" id="my-editor"  name="keterangan" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -72,4 +72,18 @@
         </div>
     </div>
 </div>
+@stop
+@section('js')
+
+<script>
+var options = {
+    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+};
+</script>
+<script>
+CKEDITOR.replace('my-editor', options);
+</script>
 @stop
