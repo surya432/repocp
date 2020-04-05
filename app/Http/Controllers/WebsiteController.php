@@ -12,9 +12,9 @@ class WebsiteController extends Controller
         $Setting = \App\General::all();
         $perijinan  = \App\Perijinan::take(6)->orderBy('created_at','desc')->get();
         $mitra  = \App\Mitra::take(6)->orderBy('created_at','desc')->get();
-        $product  = \App\Product::take(3)->orderBy('nama','asc')->get();
-        $about  = \App\About::where('flag','active')->take(4)->get();
-        $dokumentasi  = \App\Dokumentasi::with('imagesMedia')->take(4)->get();
+        $product  = \App\Product::take(6)->orderBy('nama','asc')->get();
+        $about  = \App\About::where('flag','active')->take(6)->get();
+        $dokumentasi  = \App\Dokumentasi::with('imagesMedia')->take(6)->get();
         // dd($dokumentasi);
         return view("welcome",compact('Setting','perijinan','mitra','product','about','dokumentasi'));
     }

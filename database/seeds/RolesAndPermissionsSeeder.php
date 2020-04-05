@@ -58,7 +58,7 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         \App\General::create([
             "key"=>"siteDescription2",
-            "value"=>"Percayakan Pada Kami Pengolahan, Pemanfaatan dan Transportasi Limbah B3 Dross, Slag dan Scrap Aluminium ( Abu, Rosok Kaleng, Seeker, Plat ).",
+            "value"=>"Percayakan Pada Kami Pengolahan, Pemanfaatan dan Transportasi Limbah B3 Dross, Slag dan Scrap Aluminium<br/>( Abu, Rosok Kaleng, Seeker, Plat )",
             "flag"=>"Deskripsi 2",
         ]);
         \App\General::create([
@@ -92,19 +92,29 @@ class RolesAndPermissionsSeeder extends Seeder
             "flag"=>"Twitter",
         ]);
         \App\Perijinan::create([
-            "nama"=>"NPWP",
-            "kepanjangan"=>"Nomor Pokok Wajib Pajak",
-            "nomor"=>"84.796.467.3-602.000",
+            "nama"=>"NIB",
+            "kepanjangan"=>"Nomor Induk Berusaha",
+            "nomor"=>"470/21/415.65.7/2018",
         ]);
         \App\Perijinan::create([
-            "nama"=>"TDP",
-            "kepanjangan"=>"Tanda Daftar Perusahaan",
-            "nomor"=>"132014700203",
+            "nama"=>"SIP",
+            "kepanjangan"=>"Surat Ijin Pemanfaat",
+            "nomor"=>"-",
         ]);
         \App\Perijinan::create([
-            "nama"=>"SIUP",
-            "kepanjangan"=>"Surat Ijin Usaha Perdagangan",
-            "nomor"=>"517/0780/415.35/2018",
+            "nama"=>"SIT",
+            "kepanjangan"=>"Surat Ijin Transporter",
+            "nomor"=>"-",
+        ]);
+        \App\Perijinan::create([
+            "nama"=>"RIT",
+            "kepanjangan"=>"Rekom Ijin Transporter",
+            "nomor"=>"-",
+        ]);
+        \App\Perijinan::create([
+            "nama"=>"SPPKP",
+            "kepanjangan"=>"Surat Pengukuhan Pengusaha Kena Pajak",
+            "nomor"=>"-",
         ]);
         $now = Carbon::now()->toDateTimeString();
 
@@ -112,7 +122,7 @@ class RolesAndPermissionsSeeder extends Seeder
             array(
             "nama"=>"Transportasi",
             "deskripsi"=>"Menerima Jasa Pengangkutan limbah B3 dengan standart SOP yang sesuai dengan K3",
-            "keterangan"=>"Menerima Jasa Pengangkutan limbah B3 dengan standart SOP yang sesuai dengan K3",
+            "keterangan"=>"PT. AFAN LOGAM LESTARI dengan perizinan dan kelengkapannya menawarkan jasa pengolahan limbah B3 padat maupun cair meliputi Ash, Dross, Slag serta limbah B3 cair sisa dari proses perawatan mesin & produksi.",
             "images"=>"product01.png",
            ),
         );
@@ -120,7 +130,7 @@ class RolesAndPermissionsSeeder extends Seeder
             array(
                 "nama"=>"Spectro",
                 "deskripsi"=>"Alat Pengukuran Kadar dan jenis logam pada suatu ingot yang terkomputerisasi dan akurat agar sesuai kebutuhan perusahaan Mitra Kerja",
-                "keterangan"=>"Alat Pengukuran Kadar dan jenis logam pada suatu ingot yang terkomputerisasi dan akurat agar sesuai kebutuhan perusahaan Mitra Kerja",
+                "keterangan"=>"Dengan kelengkapannya alat Spectro, produksi lebih akurat untuk mengelola limbah Ash, dross dan slag menjadi batangan ingot timah, tembaga, almunium untuk dijual ke perusahaan / pemurnian / industri",
                 "images"=>"product02.png",
             ),
         );
@@ -134,8 +144,32 @@ class RolesAndPermissionsSeeder extends Seeder
         );
         \App\Mitra::create(
             array(
-               "nama"=>"PT. Molten Alumunium Producer Indonesia",
-               "images"=>"1585395244.png"
+                "nama"=>"PT. Molten Alumunium Producer Indonesia",
+                "images"=>"1585395244.png"
+            ),
+        );
+        \App\Mitra::create(
+            array(
+                "nama"=>"PT DAIKI ALUMINIUN INDUSTRY INDONESIA",
+                "images"=>"DAIKI.PT.jpg"
+            ),
+        );
+        \App\Mitra::create(
+            array(
+                "nama"=>"PT DAIKI TRADING INDONESIA",
+                "images"=>"DAIKI.PT.jpg"
+            ),
+        );
+        \App\Mitra::create(
+            array(
+                "nama"=>"PT SIDO AGUNG ALUMI",
+                "images"=>"SAA.PT.jpg"
+            ),
+        );
+        \App\Mitra::create(
+            array(
+                "nama"=>"PT. LUT PUTRA SOLDER",
+                "images"=>"LPS.PT.png"
             ),
         );
         \App\About::create(

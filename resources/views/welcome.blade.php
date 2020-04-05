@@ -11,7 +11,6 @@
     <meta name="keywords" content="{{WebsiteController::getMeta('Keyword1',$Setting)}}">
     <link href="{{url('/')}}" rel="canonical">
     <meta name="robots" content="index, follow">
-
     <title>{{WebsiteController::getMeta('siteName',$Setting)}} - {{WebsiteController::getMeta('Keyword1',$Setting)}}
     </title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
@@ -80,7 +79,7 @@
                 <div class="intro-lead-in text-uppercase">{{WebsiteController::getMeta('siteName',$Setting)}} </div>
                 <div class="intro-heading text-uppercase">{{WebsiteController::getMeta('siteDescription1',$Setting)}}
                 </div>
-                <div class="intro-lead-in">{{WebsiteController::getMeta('siteDescription2',$Setting)}}</div>
+                <div class="intro-lead-in">{!! WebsiteController::getMeta('siteDescription2',$Setting)!!}</div>
                 <a class="btn btn-yellow js-scroll-trigger"
                     href="https://api.whatsapp.com/send?phone={{ WebsiteController::getMeta('phoneWA',$Setting) }}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Hubungi
                     Kami</a>
@@ -201,7 +200,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading text-uppercase">Perijinan</h2>
-                    <h3 class="section-subheading text-muted">Berbagai perijinan perusahaan kami</h3>
+                    <h3 class="section-subheading text-muted">Berbagai perijinan perusahaan kami yang sudah terdaftar</h3>
                 </div>
             </div>
             <div class="row text-center ijin-anm">
