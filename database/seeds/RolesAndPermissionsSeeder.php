@@ -99,22 +99,22 @@ class RolesAndPermissionsSeeder extends Seeder
         \App\Perijinan::create([
             "nama"=>"SIP",
             "kepanjangan"=>"Surat Ijin Pemanfaat",
-            "nomor"=>"-",
+            "nomor"=>"S880/Menlhk/Setjen/PLB.3/10/2019",
         ]);
         \App\Perijinan::create([
             "nama"=>"SIT",
             "kepanjangan"=>"Surat Ijin Transporter",
-            "nomor"=>"-",
+            "nomor"=>"1021007081800002",
         ]);
         \App\Perijinan::create([
             "nama"=>"RIT",
             "kepanjangan"=>"Rekom Ijin Transporter",
-            "nomor"=>"-",
+            "nomor"=>"S.802/VLPB3/PPLB3/PLB.3/8.2019",
         ]);
         \App\Perijinan::create([
             "nama"=>"SPPKP",
             "kepanjangan"=>"Surat Pengukuhan Pengusaha Kena Pajak",
-            "nomor"=>"-",
+            "nomor"=>"S-4PKP/WPJ.24/KP.1603/2018",
         ]);
         $now = Carbon::now()->toDateTimeString();
 
