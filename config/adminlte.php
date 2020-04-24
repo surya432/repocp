@@ -134,7 +134,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => route('/'),
+    'dashboard_url' => '/',
 
     'logout_url' => 'logout',
 
