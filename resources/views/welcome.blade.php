@@ -10,9 +10,24 @@
     <meta name="author" content="{!!WebsiteController::getMeta('siteName',$Setting)!!}">
     <meta name="keywords" content="{!!WebsiteController::getMeta('Keyword1',$Setting)!!}">
     <link href="{{url('/')}}" rel="canonical">
+    
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <meta name="robots" content="index, follow">
     <title>{{WebsiteController::getMeta('siteName',$Setting)}} - {{WebsiteController::getMeta('Keyword1',$Setting)}}
     </title>
+    <link href="https://stream.ksplayer.com/templates/jwplayer/skin/asset/css/kunamthemes.css" rel="stylesheet">
+	<script type="text/javascript" src="https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js"></script>
+	<script type="text/javascript">
+		jwplayer.key = "cLGMn8T20tGvW+0eXPhq4NNmLB57TrscPjd1IyJF84o=";
+	</script>
+	<style type="text/css" media="screen">
+		#apicodes-player {
+			width: 100% !important;
+			height: 100% !important;
+			overflow: hidden;
+			background-color: #000
+		}
+	</style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
         integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="img/logo.png" />

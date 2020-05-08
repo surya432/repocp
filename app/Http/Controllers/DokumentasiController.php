@@ -17,7 +17,7 @@ class DokumentasiController extends Controller
     {
         //
         $Dokumentasi  = Dokumentasi::all();
-        return view('layouts.dokumentasi',compact('Dokumentasi'));
+        return view('layouts.dokumentasi', compact('Dokumentasi'));
     }
 
     /**
@@ -28,7 +28,7 @@ class DokumentasiController extends Controller
     public function create()
     {
         //
-        
+
         return view('layouts.dokumentasiCreate');
     }
 
@@ -50,17 +50,28 @@ class DokumentasiController extends Controller
         $dokumentasi->title = $request->input('title');
         $dokumentasi->deskripsi = $request->input('deskripsi');
         $dokumentasi->content = $request->input('content');
-        $dokumentasi->tanggal = $request->input('tanggal');        
+        $dokumentasi->tanggal = $request->input('tanggal');
         if ($request->hasFile('images')) {
-            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            $imageName = time() . '.' . $request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
             $dokumentasi->images = $imageName;
         }
         $dokumentasi->save();
+        if ($request->hasFile('filename')) {
+            // \App\Media::where('dokumentasi_id', $dokumentasi->id)->delete();
+            foreach ($request->filename as $file) {
+                $name = md5(now() . $file->getClientOriginalName()).'.' . $file->getClientOriginalExtension();
+                $upload_success = $file->move(public_path('images'), $name);
+                try {
+                    $mime = $file->getMimeType();
+                } catch (\Exception $e) {
+                    $mime = $file->getClientMimeType();
+                }
+                \App\Media::create(["title" =>  $name, "path" => "$name", "mime" =>  $mime, "dokumentasi_id" => $dokumentasi->id]);
+            }
+        }
         return  redirect()->route('dokumentasi.index')
-            ->with('success','Berhasil Di Simpan');
-    
-    
+            ->with('success', 'Berhasil Di Simpan');
     }
 
     /**
@@ -84,7 +95,7 @@ class DokumentasiController extends Controller
     {
         //
         $dokumentasi = \App\Dokumentasi::with('imagesMedia')->find($dokumentasi->id);
-        return view('layouts.dokumentasiEdit',compact('dokumentasi'));
+        return view('layouts.dokumentasiEdit', compact('dokumentasi'));
     }
 
     /**
@@ -97,7 +108,7 @@ class DokumentasiController extends Controller
     public function update(Request $request, Dokumentasi $dokumentasi)
     {
         //
-         //
+        //
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'deskripsi' => 'required',
@@ -109,17 +120,17 @@ class DokumentasiController extends Controller
         $dokumentasi2->content = $request->input('content');
         $dokumentasi2->tanggal = $request->input('tanggal');
         if ($request->hasFile('images')) {
-            File::delete('images/'.$dokumentasi->images);
-            $imageName = time().'.'.$request->images->getClientOriginalExtension();
+            File::delete('images/' . $dokumentasi->images);
+            $imageName = time() . '.' . $request->images->getClientOriginalExtension();
             $request->images->move(public_path('images'), $imageName);
             $dokumentasi2->images = $imageName;
         }
-        
+
         $dokumentasi2->save();
         if ($request->hasFile('filename')) {
-            \App\Media::where('dokumentasi_id',$dokumentasi->id)->delete();
+            \App\Media::where('dokumentasi_id', $dokumentasi->id)->delete();
             foreach ($request->filename as $file) {
-                $name = md5(now()) . $file->getClientOriginalName();
+                $name = md5(now() . $file->getClientOriginalName()).'.' . $file->getClientOriginalExtension();
                 $upload_success = $file->move(public_path('images'), $name);
                 try {
                     $mime = $file->getMimeType();
@@ -129,10 +140,9 @@ class DokumentasiController extends Controller
                 \App\Media::create(["title" =>  $name, "path" => "$name", "mime" =>  $mime, "dokumentasi_id" => $dokumentasi2->id]);
             }
         }
-        
+
         return  redirect()->route('dokumentasi.index')
-            ->with('success','Berhasil Di Simpan');
-    
+            ->with('success', 'Berhasil Di Simpan');
     }
 
     /**
@@ -144,8 +154,8 @@ class DokumentasiController extends Controller
     public function destroy(Dokumentasi $dokumentasi)
     {
         // 
-          $dokumentasi->delete();
+        $dokumentasi->delete();
         return  redirect()->route('dokumentasi.index')
-        ->with('success','Berhasil Di Hapus');
+            ->with('success', 'Berhasil Di Hapus');
     }
 }

@@ -39,13 +39,13 @@
                 <div class="form-group row">
                     <label for="kepanjangan" class="col-2 col-form-label">Deskripsi</label>
                     <div class="col-10">
-                    <textarea class="form-control" name="deskripsi" rows="3">{{$dokumentasi->deskripsi}}</textarea>
+                        <textarea class="form-control" name="deskripsi" rows="3">{{$dokumentasi->deskripsi}}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Content</label>
                     <div class="col-10">
-                        <textarea class="form-control" id="my-editor"  name="content" rows="6">{{$dokumentasi->content}}</textarea>
+                        <textarea class="form-control" id="my-editor" name="content" rows="6">{{$dokumentasi->content}}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -57,36 +57,68 @@
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Gambar Dokumentasi</label>
                     <div class="col-6">
-                        <img src="https://afanlogamlestari.co.id/images/{{$dokumentasi->images}}" width="100%" height="250">
-                        
+                        <img src="{{url('/')}}/images/{{$dokumentasi->images}}" width="100%" height="250">
                         <input class="form-control" type="file" value="" name="images">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Gambar Media</label>
                     <div class="col-6">
-                       
+                        @foreach($dokumentasi->imagesMedia as $a=>$b)
+                        @if($b['mime']!="video/mp4")
+                        <img src="{{url('/')}}/images/{{$b['path']}}" width="100%" height="250">
+
+                        @else
+                        <div id="apicodes-player{{$b['id']}}"></div>
+                        <script type="text/javascript">
+                            var player = jwplayer("apicodes-player{{$b['id']}}");
+                            player.setup({
+                                sources: [{
+                                    "file": "{{url('/')}}/images/{{$b['path']}}",
+                                    "type": "video\/mp4",
+                                    "label": "default",
+                                    "default": "true"
+                                }],
+                                aspectratio: "16:9",
+                                startparam: "start",
+                                primary: "html5",
+                                autostart: false,
+                                preload: "auto",
+                                captions: {
+                                    color: "#f3f368",
+                                    fontSize: 16,
+                                    backgroundOpacity: 0,
+                                    fontfamily: "Helvetica",
+                                    edgeStyle: "raised"
+                                },
+                            });
+                            player.on("setupError", function() {
+                                swal("Server Error!", "Please contact us to fix it asap. Thank you!", "error");
+                            });
+                            player.on("error", function() {
+                                swal("Server Error!", "Please contact us to fix it asap. Thank you!", "error");
+                            });
+                        </script>
+                        @endif
+                        @endforeach
                         <div class="input-group control-group increment">
                             <input type="file" name="filename[]" class="form-control">
                             <div class="input-group-btn">
-                                <button class="btn btn-success" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i>Add</button>
+                                <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
                             </div>
                         </div>
                         <div class="clone d-none">
                             <div class="control-group input-group" style="margin-top:10px">
                                 <input type="file" name="filename[]" class="form-control">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-danger" type="button"><i
-                                            class="glyphicon glyphicon-remove"></i> Remove</button>
+                                    <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.End -->
-                <button type="submit" id="saveBtn" value="create"
-                    class="btn btn-primary btn-submit btn-action">Simpan</button>
+                <button type="submit" id="saveBtn" value="create" class="btn btn-primary btn-submit btn-action">Simpan</button>
                 {!! Form::close() !!}
 
             </div>
@@ -97,28 +129,28 @@
 
 @section("js")
 <script type="text/javascript">
-$(document).ready(function() {
-    $(".btn-success").click(function() {
-        var html = $(".clone").html();
-        $(".increment").after(html);
-    });
-    $("body").on("click", ".btn-danger", function() {
-        $(this).parents(".control-group").remove();
-    });
+    $(document).ready(function() {
+        $(".btn-success").click(function() {
+            var html = $(".clone").html();
+            $(".increment").after(html);
+        });
+        $("body").on("click", ".btn-danger", function() {
+            $(this).parents(".control-group").remove();
+        });
 
-});
+    });
 </script>
 
 <script>
-var options = {
-    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
-    
-};
+    var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+
+    };
 </script>
 <script>
-CKEDITOR.replace('my-editor', options);
+    CKEDITOR.replace('my-editor', options);
 </script>
 @stop
