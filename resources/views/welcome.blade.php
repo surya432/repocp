@@ -416,7 +416,6 @@
     var slideIndex = 1;
 
     function showModal(el) {
-        console.log(el);
         var urls = el.attr('data-link'),
             title = el.attr('title');
         $('.modal-title').text(title);
