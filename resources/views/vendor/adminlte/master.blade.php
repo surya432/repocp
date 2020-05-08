@@ -16,7 +16,22 @@
     @yield('adminlte_css_pre')
 
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+	<link href="https://stream.ksplayer.com/templates/jwplayer/skin/asset/css/kunamthemes.css" rel="stylesheet">
+	<script type="text/javascript" src="https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js"></script>
+	<script type="text/javascript">
+		jwplayer.key = "cLGMn8T20tGvW+0eXPhq4NNmLB57TrscPjd1IyJF84o=";
+	</script>
+	<style type="text/css" media="screen">
 
+
+		#apicodes-player {
+			width: 100% !important;
+			height: 100% !important;
+			overflow: hidden;
+			background-color: #000
+		}
+	</style>
     @yield('adminlte_css')
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

@@ -14,7 +14,7 @@ class WebsiteController extends Controller
         $mitra  = \App\Mitra::take(6)->orderBy('created_at','desc')->get();
         $product  = \App\Product::take(6)->orderBy('nama','asc')->get();
         $about  = \App\About::where('flag','active')->take(6)->get();
-        $dokumentasi  = \App\Dokumentasi::with('imagesMedia')->take(6)->orderBy('created_at','desc')->get();
+        $dokumentasi  = \App\Dokumentasi::with('imagesMedia')->take(12)->orderBy('created_at','desc')->get();
         // dd($dokumentasi);
         return view("welcome",compact('Setting','perijinan','mitra','product','about','dokumentasi'));
     }

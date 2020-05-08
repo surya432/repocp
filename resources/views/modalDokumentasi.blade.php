@@ -5,7 +5,8 @@
             <p class="font-produk-deskripsi">{{$b['deskripsi']}}</p>
 
         </div>
-        @if(count($b['imagesMedia'])< 1) <div class="row wrap-small-img">
+        @if(count($b['imagesMedia'])< 1) 
+        <div class="row wrap-small-img">
             <div class="column img-demo">
                 <img class="demo cursor" src="{{url('/images/'.$b['images'])}}" onclick="currentSlide(1)" alt="{{$b['title']}}">
             </div>
@@ -13,12 +14,17 @@
         <div class="mySlides ">
             <img src="{{url('/images/'.$b['images']) }}" alt="{{$b['title']}}" />
         </div>
-        @else <div class="row wrap-small-img">
-            @for($i=0;$i< count($b['imagesMedia']);$i++) <div class="column img-demo">
-                <img class="demo cursor" src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}" onclick="currentSlide({{$i+1}})" alt="{{$b['title']}}">
+        
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        @else 
+        <div class="row wrap-small-img">
+            @for($i=0;$i< count($b['imagesMedia']);$i++) 
+                <div class="column img-demo">
+                    <img class="demo cursor" src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}" onclick="currentSlide({{$i+1}})" alt="{{$b['title']}}">
+                </div>
+            @endfor
         </div>
-        @endfor
-    </div>
 
             @for($i=0;$i< count($b['imagesMedia']);$i++) <div class="mySlides ">
             <img src="{{url('/images/'.$b['imagesMedia'][$i]['path']) }}" alt="{{$b['title']}}" />
@@ -29,7 +35,7 @@
         @endif
 
         <div class="caption-container">
-            <p class="font-produk-deskripsi">{{$b['content']}}</p>
+            <p class="font-produk-deskripsi">{!! $b['content'] !!}</p>
             <ul class="list-inline m-b-40">
                 <li>Date : {{$b['tanggal']}}</li>
             </ul>

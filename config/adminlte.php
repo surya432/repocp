@@ -140,7 +140,7 @@ return [
 
     'login_url' => 'login',
 
-    'register_url' => false, //'register',
+    'register_url' =>  'register',
 
     'password_reset_url' => false,//'password/reset',
 

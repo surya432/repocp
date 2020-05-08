@@ -45,7 +45,7 @@
                 <div class="form-group row">
                     <label for="example-search-input" class="col-2 col-form-label">Content</label>
                     <div class="col-10">
-                        <textarea class="form-control" id="my-editor"  name="content" rows="6"></textarea>
+                        <textarea class="form-control" id="my-editor"  name="content" rows="6">{{$dokumentasi->content}}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -57,12 +57,15 @@
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Gambar Dokumentasi</label>
                     <div class="col-6">
+                        <img src="https://afanlogamlestari.co.id/images/{{$dokumentasi->images}}" width="100%" height="250">
+                        
                         <input class="form-control" type="file" value="" name="images">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="example-email-input" class="col-2 col-form-label">Gambar Media</label>
                     <div class="col-6">
+                       
                         <div class="input-group control-group increment">
                             <input type="file" name="filename[]" class="form-control">
                             <div class="input-group-btn">

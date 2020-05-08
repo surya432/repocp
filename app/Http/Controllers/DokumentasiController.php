@@ -83,6 +83,7 @@ class DokumentasiController extends Controller
     public function edit(Dokumentasi $dokumentasi)
     {
         //
+        $dokumentasi = \App\Dokumentasi::with('imagesMedia')->find($dokumentasi->id);
         return view('layouts.dokumentasiEdit',compact('dokumentasi'));
     }
 
@@ -113,8 +114,10 @@ class DokumentasiController extends Controller
             $request->images->move(public_path('images'), $imageName);
             $dokumentasi2->images = $imageName;
         }
+        
         $dokumentasi2->save();
         if ($request->hasFile('filename')) {
+            \App\Media::where('dokumentasi_id',$dokumentasi->id)->delete();
             foreach ($request->filename as $file) {
                 $name = md5(now()) . $file->getClientOriginalName();
                 $upload_success = $file->move(public_path('images'), $name);
@@ -123,9 +126,10 @@ class DokumentasiController extends Controller
                 } catch (\Exception $e) {
                     $mime = $file->getClientMimeType();
                 }
-                \App\Media::create(["title" =>  $name, "path" => "images/$name", "mime" =>  $mime, "dokumentasi_id" => $dokumentasi2->id]);
+                \App\Media::create(["title" =>  $name, "path" => "$name", "mime" =>  $mime, "dokumentasi_id" => $dokumentasi2->id]);
             }
         }
+        
         return  redirect()->route('dokumentasi.index')
             ->with('success','Berhasil Di Simpan');
     
