@@ -137,6 +137,64 @@ use App\Http\Controllers\WebsiteController; ?>
         </div>
     </section>
 
+    
+    <!-- Perijinan -->
+    <section class="page-section" id="ijin">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Perijinan</h2>
+                    <h3 class="section-subheading text-muted">Berbagai perijinan perusahaan kami yang sudah terdaftar</h3>
+                </div>
+            </div>
+            <div class="row text-center ijin-anm">
+                @if(!is_null($perijinan))
+                @foreach($perijinan as $a =>$b)
+                <div class="col-md-4">
+                    <div class="ijin-box">
+                        <img src="img/ijin/ijin.png" alt="">
+                        <h4 class="ijin-heading">{!!$b['nama']!!}</h4>
+                        <p>( {!!$b['kepanjangan']!!} )</p>
+                        <p>No. : {!!$b['nomor']!!}</p>
+                    </div>
+                </div>
+                @endforeach
+                @endif
+
+            </div>
+    </section>
+
+    <!-- Team -->
+    <section class="bg-light page-section" id="mitra">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Mitra Kerja Kami</h2>
+                    <h3 class="section-subheading text-muted">Berikut Mitra Kerja Terbaik</h3>
+                </div>
+            </div>
+            <div class="row">
+                @if(!is_null($mitra))
+                @foreach($mitra as $a =>$b)
+                <div class="col-sm-4 margin-auto">
+                    <div class="team-member">
+                        <img class="mx-auto" src="{{ url('/images/'.$b['images']) }}" alt="{{ $b['nama'] }}">
+                        <h4>{{ $b['nama'] }}</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+                @endforeach
+                @endif
+                <!-- <div class="col-sm-4 margin-auto">
+                    <div class="team-member">
+                        <img class="mx-auto" src="img/mitra/4.png" alt="">
+                        <h4>PT. Molten Alumunium Producer Indonesia</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div> -->
+            </div>
+    </section>
+
     <!-- Services -->
     <section class="page-section" id="produk">
         <div class="container">
@@ -170,7 +228,7 @@ use App\Http\Controllers\WebsiteController; ?>
             </div> -->
         </div>
     </section>
-
+    
     <!-- About -->
     <section class="page-section" id="tentang">
         <div class="container">
@@ -212,61 +270,8 @@ use App\Http\Controllers\WebsiteController; ?>
             </div>
         </div>
     </section>
-    <!-- Team -->
-    <section class="bg-light page-section" id="mitra">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Mitra Kerja Kami</h2>
-                    <h3 class="section-subheading text-muted">Berikut Mitra Kerja Terbaik</h3>
-                </div>
-            </div>
-            <div class="row">
-                @if(!is_null($mitra))
-                @foreach($mitra as $a =>$b)
-                <div class="col-sm-4 margin-auto">
-                    <div class="team-member">
-                        <img class="mx-auto" src="{{ url('/images/'.$b['images']) }}" alt="{{ $b['nama'] }}">
-                        <h4>{{ $b['nama'] }}</h4>
-                        <p class="text-muted"></p>
-                    </div>
-                </div>
-                @endforeach
-                @endif
-                <!-- <div class="col-sm-4 margin-auto">
-                    <div class="team-member">
-                        <img class="mx-auto" src="img/mitra/4.png" alt="">
-                        <h4>PT. Molten Alumunium Producer Indonesia</h4>
-                        <p class="text-muted"></p>
-                    </div>
-                </div> -->
-            </div>
-    </section>
-    <!-- Perijinan -->
-    <section class="page-section" id="ijin">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Perijinan</h2>
-                    <h3 class="section-subheading text-muted">Berbagai perijinan perusahaan kami yang sudah terdaftar</h3>
-                </div>
-            </div>
-            <div class="row text-center ijin-anm">
-                @if(!is_null($perijinan))
-                @foreach($perijinan as $a =>$b)
-                <div class="col-md-4">
-                    <div class="ijin-box">
-                        <img src="img/ijin/ijin.png" alt="">
-                        <h4 class="ijin-heading">{!!$b['nama']!!}</h4>
-                        <p>( {!!$b['kepanjangan']!!} )</p>
-                        <p>No. : {!!$b['nomor']!!}</p>
-                    </div>
-                </div>
-                @endforeach
-                @endif
 
-            </div>
-    </section>
+
 
     <!-- Contact -->
     <section class="page-section" id="kontak">
