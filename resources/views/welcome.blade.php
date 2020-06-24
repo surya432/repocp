@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php use App\Http\Controllers\WebsiteController;?>
+<?php
+
+use App\Http\Controllers\WebsiteController; ?>
 
 <head>
 
@@ -10,26 +12,25 @@
     <meta name="author" content="{!!WebsiteController::getMeta('siteName',$Setting)!!}">
     <meta name="keywords" content="{!!WebsiteController::getMeta('Keyword1',$Setting)!!}">
     <link href="{{url('/')}}" rel="canonical">
-    
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <meta name="robots" content="index, follow">
     <title>{{WebsiteController::getMeta('siteName',$Setting)}} - {{WebsiteController::getMeta('Keyword1',$Setting)}}
     </title>
     <link href="https://stream.ksplayer.com/templates/jwplayer/skin/asset/css/kunamthemes.css" rel="stylesheet">
-	<script type="text/javascript" src="https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js"></script>
-	<script type="text/javascript">
-		jwplayer.key = "cLGMn8T20tGvW+0eXPhq4NNmLB57TrscPjd1IyJF84o=";
-	</script>
-	<style type="text/css" media="screen">
-		#apicodes-player {
-			width: 100% !important;
-			height: 100% !important;
-			overflow: hidden;
-			background-color: #000
-		}
-	</style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
-        integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js"></script>
+    <script type="text/javascript">
+        jwplayer.key = "cLGMn8T20tGvW+0eXPhq4NNmLB57TrscPjd1IyJF84o=";
+    </script>
+    <style type="text/css" media="screen">
+        #apicodes-player {
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden;
+            background-color: #000
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="img/logo.png" />
 
     <!-- Bootstrap core CSS -->
@@ -56,9 +57,7 @@
                 <div class="logo"><img src="img/logo.png"></div>
                 <div class="brand">{{WebsiteController::getMeta('siteName',$Setting)}} </div>
             </a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
@@ -95,12 +94,48 @@
                 <div class="intro-heading text-uppercase">{{WebsiteController::getMeta('siteDescription1',$Setting)}}
                 </div>
                 <div class="intro-lead-in">{!! WebsiteController::getMeta('siteDescription2',$Setting)!!}</div>
-                <a class="btn btn-yellow js-scroll-trigger"
-                    href="https://api.whatsapp.com/send?phone={{ WebsiteController::getMeta('phoneWA',$Setting) }}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Hubungi
+                <a class="btn btn-yellow js-scroll-trigger" href="https://api.whatsapp.com/send?phone={{ WebsiteController::getMeta('phoneWA',$Setting) }}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Hubungi
                     Kami</a>
             </div>
         </div>
     </header>
+    <!-- Dokumentasi -->
+    <section class="page-section" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Dokumentasi</h2>
+                    <h3 class="section-subheading text-muted">Kegiatan Kami</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                @if(!is_null($dokumentasi))
+                @foreach($dokumentasi as $a =>$b)
+                <div class="col-md-4 col-sm-6 portfolio-item cursor btn-action" data-link="{{route('modalDokumentasi',$b['id'])}}">
+                    <div class="box-portfolio">
+                        <a class="portfolio-link">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    Lihat Detail
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{{url('/images/'.$b['images']) }}" alt="{{$b['title']}}">
+                        </a>
+                        <div class="portfolio-caption">
+                            <h4>{{$b['title']}}
+                                <h4>
+                                    <p class="">{{$b['deskripsi']}}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @endif
+
+
+            </div>
+        </div>
+    </section>
 
     <!-- Services -->
     <section class="page-section" id="produk">
@@ -151,8 +186,7 @@
                         @for($i =0;$i < count($about);$i++) @if(($i/2)==1 || $i==0) <li class="timeline-inverted">@else
                             <li>@endif
                                 <div class="timeline-image">
-                                    <img class="rounded-circle img-fluid"
-                                        src="{!!url('images/'.$about[$i]['images'])!!}" alt="">
+                                    <img class="rounded-circle img-fluid" src="{!!url('images/'.$about[$i]['images'])!!}" alt="">
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
@@ -168,8 +202,7 @@
 
                             <li class="timeline-inverted add-li">
                                 <div class="btn-blue fit-con">
-                                    <a
-                                        href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">
+                                    <a href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">
                                         Be Part Of Our Story!
                                     </a>
                                 </div>
@@ -234,42 +267,7 @@
 
             </div>
     </section>
-    </section>
-    <section class="page-section" id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Dokumentasi</h2>
-                    <h3 class="section-subheading text-muted">Kegiatan Kami</h3>
-                </div>
-            </div>
 
-            <div class="row">
-                @if(!is_null($dokumentasi))
-                @foreach($dokumentasi as $a =>$b)
-                <div class="col-md-4 col-sm-6 portfolio-item cursor btn-action" data-link="{{route('modalDokumentasi',$b['id'])}}">
-                    <div class="box-portfolio">
-                        <a class="portfolio-link">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content">
-                                    Lihat Detail
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="{{url('/images/'.$b['images']) }}" alt="{{$b['title']}}">
-                        </a>
-                        <div class="portfolio-caption">
-                            <h4>{{$b['title']}}<h4>
-                                    <p class="">{{$b['deskripsi']}}</p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @endif
-
-
-            </div>
-        </div>
-    </section>
     <!-- Contact -->
     <section class="page-section" id="kontak">
         <div class="container">
@@ -293,20 +291,17 @@
                                     </p>
                                     <ul class="list-inline social-buttons">
                                         <li class="list-inline-item">
-                                            <a href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20"
-                                                target="_blank">
+                                            <a href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20" target="_blank">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a href="https://facebook.com/{!! WebsiteController::getMeta('facebook',$Setting) !!}"
-                                                target="_blank">
+                                            <a href="https://facebook.com/{!! WebsiteController::getMeta('facebook',$Setting) !!}" target="_blank">
                                                 <i class="fab fa-facebook-f"></i>
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
-                                            <a href="https://twitter.com/{!! WebsiteController::getMeta('twitter',$Setting) !!}"
-                                                target="_blank">
+                                            <a href="https://twitter.com/{!! WebsiteController::getMeta('twitter',$Setting) !!}" target="_blank">
                                                 <i class="fab fa-twitter"></i>
                                             </a>
                                         </li>
@@ -314,10 +309,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.402339757391!2d112.31869704994291!3d-7.531020376389407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7814b2baa352af%3A0xfe6d5e9f02b5e529!2sAfanLogamLestari!5e0!3m2!1sen!2sid!4v1582383311713!5m2!1sen!2sid"
-                                    width="100%" height="350px" frameborder="0" style="border:0;"
-                                    allowfullscreen=""></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.402339757391!2d112.31869704994291!3d-7.531020376389407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7814b2baa352af%3A0xfe6d5e9f02b5e529!2sAfanLogamLestari!5e0!3m2!1sen!2sid!4v1582383311713!5m2!1sen!2sid" width="100%" height="350px" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                             </div>
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
@@ -374,14 +366,12 @@
                                 <h2 class="text-uppercase">{{$b['nama']}}</h2>
                                 <p class="item-intro text-muted">{{$b['deskripsi']}}</p>
                                 @if(!empty($b['imagesproduct']))
-                                <img class="img-fluid d-block mx-auto" src="{!!url('images/'.$b['imagesproduct'])!!}"
-                                    alt="{{$b['nama']}}">
+                                <img class="img-fluid d-block mx-auto" src="{!!url('images/'.$b['imagesproduct'])!!}" alt="{{$b['nama']}}">
                                 @endif
                                 <p>
                                     {!! $b['keterangan'] !!}
                                 </p>
-                                <a class="btn btn-blue js-scroll-trigger"
-                                    href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
+                                <a class="btn btn-blue js-scroll-trigger" href="https://api.whatsapp.com/send?phone={{WebsiteController::getMeta('phoneWA',$Setting)}}&text=%20Hallo%20ingin%20menggunakan%20jasa%20anda%20untuk%20membuat">Tertarik</a>
                             </div>
                         </div>
                     </div>
@@ -393,7 +383,7 @@
 
     <div id="myModal" tabindex="-1" role="dialog" class="modal-dokumentasi">
 
-</div>
+    </div>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -408,83 +398,83 @@
     <!-- Custom scripts for this template -->
     <script src="js/agency.min.js"></script>
     <script type="text/javascript">
-    $('body').on('click', '.btn-action', function(elemen) {
-        elemen.preventDefault();
-        showModal($(this))
-        // openModal()
-    });
-    var slideIndex = 1;
-
-    function showModal(el) {
-        var urls = el.attr('data-link'),
-            title = el.attr('title');
-        $('.modal-title').text(title);
-        axios({
-            url: urls,
-            credentials: true,
-            method: "GET",
-        }).then(response => {
-            // // console.log(response);
-            $('.modal-dokumentasi').html(response.data)
-            // // initElem();
-            showSlides(1);
-            openModal();
-            $('.modal-dokumentasi').modal('show');
-        }).catch(error => {
-            console.log(error);
+        $('body').on('click', '.btn-action', function(elemen) {
+            elemen.preventDefault();
+            showModal($(this))
+            // openModal()
         });
-    }
+        var slideIndex = 1;
 
-    function openModal() {
-        document.getElementById("myModal").style.display = "block";
-    }
-
-    function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-        $('#myModal').modal('hide');
-
-    }
-
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-       try {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-
-        var dots = document.getElementsByClassName("demo");
-        var captionText = document.getElementById("caption");
-        if (n > slides.length) {
-            slideIndex = 1
+        function showModal(el) {
+            var urls = el.attr('data-link'),
+                title = el.attr('title');
+            $('.modal-title').text(title);
+            axios({
+                url: urls,
+                credentials: true,
+                method: "GET",
+            }).then(response => {
+                // // console.log(response);
+                $('.modal-dokumentasi').html(response.data)
+                // // initElem();
+                showSlides(1);
+                openModal();
+                $('.modal-dokumentasi').modal('show');
+            }).catch(error => {
+                console.log(error);
+            });
         }
-        if (n < 1) {
-            slideIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        captionText.innerHTML = dots[slideIndex - 1].alt;
-       } catch (error) {
-           
-       }
-    }
 
-    function addClassImg() {
-        $("modal-body p img").addClass("img-fluid d-block mx-auto");
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
 
-    }
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+            $('#myModal').modal('hide');
+
+        }
+
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            try {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+
+                var dots = document.getElementsByClassName("demo");
+                var captionText = document.getElementById("caption");
+                if (n > slides.length) {
+                    slideIndex = 1
+                }
+                if (n < 1) {
+                    slideIndex = slides.length
+                }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+                captionText.innerHTML = dots[slideIndex - 1].alt;
+            } catch (error) {
+
+            }
+        }
+
+        function addClassImg() {
+            $("modal-body p img").addClass("img-fluid d-block mx-auto");
+
+        }
     </script>
 
 </body>
