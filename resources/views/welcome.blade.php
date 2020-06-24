@@ -139,7 +139,7 @@ use App\Http\Controllers\WebsiteController; ?>
 
     
     <!-- Perijinan -->
-    <section class="page-section" id="ijin">
+    <section class="bg-light page-section" id="ijin">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -165,7 +165,7 @@ use App\Http\Controllers\WebsiteController; ?>
     </section>
 
     <!-- Team -->
-    <section class="bg-light page-section" id="mitra">
+    <section class="page-section" id="mitra">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -196,7 +196,7 @@ use App\Http\Controllers\WebsiteController; ?>
     </section>
 
     <!-- Services -->
-    <section class="page-section" id="produk">
+    <section class="bg-light page-section" id="produk">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -228,7 +228,7 @@ use App\Http\Controllers\WebsiteController; ?>
             </div> -->
         </div>
     </section>
-    
+
     <!-- About -->
     <section class="page-section" id="tentang">
         <div class="container">
