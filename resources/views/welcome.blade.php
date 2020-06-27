@@ -271,8 +271,6 @@ use App\Http\Controllers\WebsiteController; ?>
         </div>
     </section>
 
-
-
     <!-- Contact -->
     <section class="page-section" id="kontak">
         <div class="container">
@@ -308,6 +306,11 @@ use App\Http\Controllers\WebsiteController; ?>
                                         <li class="list-inline-item">
                                             <a href="https://twitter.com/{!! WebsiteController::getMeta('twitter',$Setting) !!}" target="_blank">
                                                 <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="https://instagram.com/{!! WebsiteController::getMeta('instagram',$Setting) !!}" target="_blank">
+                                                <i class="fab fa-instagram"></i>
                                             </a>
                                         </li>
                                     </ul>
